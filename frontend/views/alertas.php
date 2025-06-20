@@ -7,24 +7,24 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 require '../../backend/config/conexion.php';
 
-// Lotes por vencer
+// lotes por vencer
 $hoy = date('Y-m-d');
 $limite = date('Y-m-d', strtotime('+15 days'));
 
 $stmt1 = $conn->prepare("
     SELECT l.id_lote, m.nombre AS medicamento, l.fecha_vencimiento, l.cantidad 
-    FROM Lotes l
-    JOIN Medicamentos m ON l.id_medicamento = m.id_medicamento
+    FROM lotes l
+    JOIN medicamentos m ON l.id_medicamento = m.id_medicamento
     WHERE l.fecha_vencimiento BETWEEN ? AND ?
 ");
 $stmt1->execute([$hoy, $limite]);
 $vencimientos = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-// Lotes con stock bajo
+// lotes con stock bajo
 $stmt2 = $conn->prepare("
     SELECT l.id_lote, m.nombre AS medicamento, l.cantidad 
-    FROM Lotes l
-    JOIN Medicamentos m ON l.id_medicamento = m.id_medicamento
+    FROM lotes l
+    JOIN medicamentos m ON l.id_medicamento = m.id_medicamento
     WHERE l.cantidad < 10
 ");
 $stmt2->execute();
@@ -47,7 +47,7 @@ $stock_bajo = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
   <div class="row">
     <div class="col-md-6">
-      <h5 class="text-danger">🔴 Lotes por vencer (≤ 15 días)</h5>
+      <h5 class="text-danger">🔴 lotes por vencer (≤ 15 días)</h5>
       <table class="table table-bordered table-sm">
         <thead class="table-danger">
           <tr>
@@ -71,7 +71,7 @@ $stock_bajo = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div class="col-md-6">
-      <h5 class="text-warning">🟠 Lotes con stock bajo (&lt; 10)</h5>
+      <h5 class="text-warning">🟠 lotes con stock bajo (&lt; 10)</h5>
       <table class="table table-bordered table-sm">
         <thead class="table-warning">
           <tr>
