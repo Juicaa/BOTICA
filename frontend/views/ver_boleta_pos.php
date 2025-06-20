@@ -37,10 +37,13 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/boleta.css">
+  
   <style>
     body {
-      .boleta-box { border: 1px solid #ccc; padding: 20px; border-radius: 10px; }
+      background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
+      border: 1px solid #ccc;
+      padding: 25px;
+      border-radius: 10px;
       font-family: monospace;
       font-size: 12px;
       width: 230px;
