@@ -37,19 +37,3 @@ jobs:
 
       # - name: Run HTMLHint on HTML files
       #   run: npx htmlhint "**/*.html"
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy to Hostinger
-        run: |
-          ssh u123456789@mi-dominio.com 'cd /home/u123456789/public_html && git pull origin main'
