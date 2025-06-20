@@ -1,0 +1,20 @@
+# Forzar la URL a ser siempre relativa al dominio
+RewriteEngine On
+
+# Base del proyecto
+RewriteBase /Botica-bienestar-y-salud/
+
+# Redirigir al index
+RewriteRule ^$ frontend/views/index.html [L]
+
+# Permitir frontend completo
+RewriteRule ^frontend/(.*)$ frontend/$1 [L]
+
+# Permitir archivos de login y logout
+RewriteRule ^backend/auth/(.*)$ - [L]
+
+# ✅ EXCEPCIÓN PARA LOS CONTROLADORES (AJAX / GRÁFICOS)
+RewriteCond %{REQUEST_URI} !^/Botica-bienestar-y-salud/backend/controllers/
+RewriteCond %{REQUEST_URI} !^/Botica-bienestar-y-salud/backend/auth/
+RewriteCond %{REQUEST_URI} !^/Botica-bienestar-y-salud/backend/exports/
+RewriteRule ^backend/(.*)\.php$ - [F]

@@ -1,0 +1,160 @@
+body {
+  font-family: 'Mukta', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+  background-color: #f2fdf5;
+}
+
+/* Fondo de la página */
+body::before {
+  content: "";
+  background: url('../img/fondo_login.jpg') no-repeat center center / cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.35;
+  z-index: -1;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Título principal */
+h2 {
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Subtítulo o secciones */
+h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Tarjetas resumen */
+.card-boxes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.card {
+  flex: 1;
+  min-width: 220px;
+  background-color: #ffffff;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Botones de acción */
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  background-color: #54cc96;
+  border: none;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #40b97e;
+}
+
+/* Tabla de alertas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+table th, table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+table th {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Enlaces */
+a {
+  color: #508aeb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-boxes {
+    flex-direction: column;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+  
+}
+
+/* Menú lateral */
+.nav-link {
+  margin-bottom: 10px; /* Espacio entre botones */
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #2b2b2b;
+  transition: background-color 0.2s ease;
+}
+
+.nav-link i {
+  font-size: 1.1rem;
+}
+
+.nav-link.active {
+  background-color: #54cc96;
+  color: rgb(0, 0, 0) !important;
+}
+
+.nav-item {
+    color: rgb(0, 0, 0) !important;
+}
+
+.nav-link {
+    color: rgb(0, 0, 0) !important;
+}

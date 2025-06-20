@@ -1,0 +1,18 @@
+{
+    "name": "david/botica-bienestar-devops",
+    "autoload": {
+        "psr-4": {
+            "David\\BoticaBienestarDevops\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sxxntoz",
+            "email": "2201010219@undc.edu.pe"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.3",
+        "tecnickcom/tcpdf": "^6.10"
+    }
+}

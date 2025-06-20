@@ -1,0 +1,1 @@
+{"dni_cliente":"04412417","nombre_cliente":"MARTIN ALBERTO VIZCARRA CORNEJO","lotes":["1"],"cantidades":["10"]}

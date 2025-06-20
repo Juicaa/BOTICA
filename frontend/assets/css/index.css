@@ -1,0 +1,124 @@
+body {
+  position: relative;
+  font-family: 'Mukta', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f2fdf5;
+}
+
+body::before {
+  content: "";
+  background: url('../img/fondo_login.jpg') no-repeat center center / cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Centrado del contenido */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* Tarjeta del login */
+.login-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* Logo */
+.login-logo {
+  max-width: 90px;
+  margin-bottom: 0.75rem;
+}
+
+/* Título */
+.login-card h4 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Inputs */
+.login-form input.form-control {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.login-form input.form-control:focus {
+  border-color: #54cc96;
+  box-shadow: none;
+}
+
+/* Recordarme */
+.form-check {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Botón */
+.btn-primary {
+  background-color: #54cc96;
+  border-color: #54cc96;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.65rem;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #40b97e;
+  border-color: #40b97e;
+}
+
+/* Footer */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 1.5rem;
+}
+
+.card-footer a {
+  color: #508aeb;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+.boton-celeste {
+  background-color: #5bc0de;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+
