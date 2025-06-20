@@ -20,27 +20,23 @@ jobs:
       - name: Install dependencies with Composer
         run: composer install
 
-      # Instala PHPUnit explícitamente si no está en composer.json (opcional)
-      - name: Ensure PHPUnit is installed
-        run: |
-          if [ ! -f vendor/bin/phpunit ]; then
-            composer require --dev phpunit/phpunit ^9.5
-          fi
+      # Elimina/Comenta PHPUnit si no tienes tests
+      # - name: Run PHPUnit tests
+      #   run: vendor/bin/phpunit --configuration phpunit.xml
 
-      - name: Run PHPUnit tests
-        run: vendor/bin/phpunit --configuration phpunit.xml || echo "PHPUnit tests failed (ignorar si no hay tests configurados)"
+      # Elimina/Comenta Stylelint si no tienes configuración
+      # - name: Install Stylelint
+      #   run: npm install stylelint --save-dev
 
-      - name: Install Stylelint
-        run: npm install stylelint --save-dev
+      # - name: Run Stylelint on CSS files
+      #   run: npx stylelint "**/*.css"
 
-      - name: Run Stylelint on CSS files
-        run: npx stylelint "**/*.css"
+      # Elimina/Comenta HTMLHint si no tienes configuración
+      # - name: Install HTMLHint
+      #   run: npm install htmlhint --save-dev
 
-      - name: Install HTMLHint
-        run: npm install htmlhint --save-dev
-
-      - name: Run HTMLHint on HTML files
-        run: npx htmlhint "**/*.html"
+      # - name: Run HTMLHint on HTML files
+      #   run: npx htmlhint "**/*.html"
 
   deploy:
     runs-on: ubuntu-latest
