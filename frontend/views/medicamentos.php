@@ -41,7 +41,7 @@ if (isset($_GET['eliminar'])) {
 
 // Obtener medicamentos con sus categorías
 $stmt = $conn->prepare("SELECT m.id_medicamento, m.nombre, c.nombre AS categoria, c.id_categoria 
-                        FROM Medicamentos m 
+                        FROM medicamentos m 
                         JOIN categorias c ON m.id_categoria = c.id_categoria 
                         ORDER BY m.id_medicamento DESC");
 $stmt->execute();
