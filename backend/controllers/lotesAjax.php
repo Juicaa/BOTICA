@@ -5,7 +5,7 @@ $term = $_GET['term'] ?? '';
 
 $stmt = $conn->prepare("
     SELECT l.id_lote, l.cantidad, l.precio_unitario, m.nombre
-    FROM Lotes l
+    FROM lotes l
     JOIN medicamentos m ON l.id_medicamento = m.id_medicamento
     WHERE l.cantidad > 0 AND m.nombre LIKE ?
     LIMIT 10
