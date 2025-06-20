@@ -44,7 +44,7 @@ $detalles = [];
 foreach ($lotes as $i => $id_lote) {
     $cantidad = (int)$cantidades[$i];
 
-    $stmt = $conn->prepare("SELECT cantidad, precio_unitario FROM Lotes WHERE id_lote = ?");
+    $stmt = $conn->prepare("SELECT cantidad, precio_unitario FROM lotes WHERE id_lote = ?");
     $stmt->execute([$id_lote]);
     $lote = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -66,16 +66,16 @@ foreach ($lotes as $i => $id_lote) {
 }
 
 // Paso 3: Insertar venta
-$stmt = $conn->prepare("INSERT INTO Ventas (total, id_usuario, id_cliente) VALUES (?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO ventas (total, id_usuario, id_cliente) VALUES (?, ?, ?)");
 $stmt->execute([$total, $id_usuario, $id_cliente]);
 $id_venta = $conn->lastInsertId();
 
 // Paso 4: Insertar detalle de salida y actualizar stock
 foreach ($detalles as $detalle) {
-    $stmt = $conn->prepare("INSERT INTO SalidaLotes (id_lote, id_venta, cantidad) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO salidalotes (id_lote, id_venta, cantidad) VALUES (?, ?, ?)");
     $stmt->execute([$detalle['id_lote'], $id_venta, $detalle['cantidad']]);
 
-    $stmt = $conn->prepare("UPDATE Lotes SET cantidad = cantidad - ? WHERE id_lote = ?");
+    $stmt = $conn->prepare("UPDATE lotes SET cantidad = cantidad - ? WHERE id_lote = ?");
     $stmt->execute([$detalle['cantidad'], $detalle['id_lote']]);
 }
 

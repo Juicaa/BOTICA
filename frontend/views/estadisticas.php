@@ -9,57 +9,57 @@ require '../../backend/config/conexion.php';
 // --- VENTAS SEMANALES ---
 $inicioSemana = $_GET['inicio_semana'] ?? date('Y-m-d');
 $finSemana = $_GET['fin_semana'] ?? date('Y-m-d', strtotime($inicioSemana . ' +7 days'));
-$stmtSemana = $conn->prepare("SELECT DATE(fecha) as dia, SUM(total) as total FROM Ventas WHERE fecha BETWEEN ? AND ? GROUP BY dia");
+$stmtSemana = $conn->prepare("SELECT DATE(fecha) as dia, SUM(total) as total FROM ventas WHERE fecha BETWEEN ? AND ? GROUP BY dia");
 $stmtSemana->execute([$inicioSemana, $finSemana]);
 $ventas_semanales = $stmtSemana->fetchAll(PDO::FETCH_ASSOC);
 
 // --- VENTAS MENSUALES ---
 $mesSeleccionado = $_GET['mes'] ?? date('n');
 $anioMesSeleccionado = $_GET['anio_mes'] ?? date('Y');
-$stmtMensual = $conn->prepare("SELECT MONTH(fecha) as mes, SUM(total) as total FROM Ventas WHERE YEAR(fecha) = ? GROUP BY mes");
+$stmtMensual = $conn->prepare("SELECT MONTH(fecha) as mes, SUM(total) as total FROM ventas WHERE YEAR(fecha) = ? GROUP BY mes");
 $stmtMensual->execute([$anioMesSeleccionado]);
 $ventas_mensuales = $stmtMensual->fetchAll(PDO::FETCH_ASSOC);
 
 // --- VENTAS ANUALES ---
 $anualYear = $_GET['anio_anual'] ?? date('Y');
-$stmtAnual = $conn->prepare("SELECT MONTH(fecha) as mes, SUM(total) as total FROM Ventas WHERE YEAR(fecha) = ? GROUP BY mes");
+$stmtAnual = $conn->prepare("SELECT MONTH(fecha) as mes, SUM(total) as total FROM ventas WHERE YEAR(fecha) = ? GROUP BY mes");
 $stmtAnual->execute([$anualYear]);
 $ventas_anuales = $stmtAnual->fetchAll(PDO::FETCH_ASSOC);
 
 // --- VENTAS POR VENDEDOR ---
 $vendedorSeleccionado = $_GET['vendedor'] ?? '';
 if ($vendedorSeleccionado) {
-    $stmtVendedor = $conn->prepare("SELECT u.usuario, SUM(v.total) as total FROM Ventas v JOIN Usuarios u ON v.id_usuario = u.id_usuario WHERE u.usuario = ? GROUP BY u.usuario");
+    $stmtVendedor = $conn->prepare("SELECT u.usuario, SUM(v.total) as total FROM ventas v JOIN Usuarios u ON v.id_usuario = u.id_usuario WHERE u.usuario = ? GROUP BY u.usuario");
     $stmtVendedor->execute([$vendedorSeleccionado]);
 } else {
-    $stmtVendedor = $conn->query("SELECT u.usuario, SUM(v.total) as total FROM Ventas v JOIN Usuarios u ON v.id_usuario = u.id_usuario GROUP BY u.usuario");
+    $stmtVendedor = $conn->query("SELECT u.usuario, SUM(v.total) as total FROM ventas v JOIN Usuarios u ON v.id_usuario = u.id_usuario GROUP BY u.usuario");
 }
 $vendedores = $stmtVendedor->fetchAll(PDO::FETCH_ASSOC);
 $totalVendedor = array_sum(array_column($vendedores, 'total'));
-$totalGeneral = $conn->query("SELECT SUM(total) FROM Ventas")->fetchColumn() ?: 1;
+$totalGeneral = $conn->query("SELECT SUM(total) FROM ventas")->fetchColumn() ?: 1;
 $listaUsuarios = $conn->query("SELECT DISTINCT usuario FROM Usuarios WHERE rol = 'vendedor'")->fetchAll(PDO::FETCH_COLUMN);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Estadísticas de Ventas</title>
+  <title>Estadísticas de ventas</title>
   <link rel="stylesheet" href="../assets/css/dashboard.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container p-4">
-  <h2>Estadísticas de Ventas</h2>
+  <h2>Estadísticas de ventas</h2>
   <a href="dashboard_admin.php" class="btn btn-outline-secondary mb-3"><i class="bi bi-arrow-left-circle"></i> Volver al Dashboard</a>
   <div class="row g-4">
 
-    <!-- Ventas Semanales -->
+    <!-- ventas Semanales -->
     <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <h5>Ventas Semanales</h5>
+            <h5>ventas Semanales</h5>
             <div class="d-flex gap-2">
               <input type="date" name="inicio_semana" id="fechaInicio" value="<?= htmlspecialchars($inicioSemana) ?>" class="form-control form-control-sm" required>
               <input type="date" name="fin_semana" id="fechaFin" value="<?= htmlspecialchars($finSemana) ?>" class="form-control form-control-sm" required>
@@ -71,12 +71,12 @@ $listaUsuarios = $conn->query("SELECT DISTINCT usuario FROM Usuarios WHERE rol =
       </div>
     </div>
 
-    <!-- Ventas Mensuales -->
+    <!-- ventas Mensuales -->
     <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <h5>Ventas Mensuales</h5>
+            <h5>ventas Mensuales</h5>
             <div class="d-flex gap-2">
               <select name="mes" class="form-select form-select-sm">
                 <?php foreach (range(1, 12) as $m): ?>
@@ -98,12 +98,12 @@ $listaUsuarios = $conn->query("SELECT DISTINCT usuario FROM Usuarios WHERE rol =
       </div>
     </div>
 
-    <!-- Ventas Anuales -->
+    <!-- ventas Anuales -->
     <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <h5>Ventas Anuales</h5>
+            <h5>ventas Anuales</h5>
             <div class="d-flex gap-2">
               <select name="anio_anual" class="form-select form-select-sm">
                 <?php foreach (range(date('Y') - 5, date('Y') + 1) as $a): ?>
@@ -118,12 +118,12 @@ $listaUsuarios = $conn->query("SELECT DISTINCT usuario FROM Usuarios WHERE rol =
       </div>
     </div>
 
-    <!-- Ventas por Vendedor -->
+    <!-- ventas por Vendedor -->
     <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
           <div class="d-flex justify-content-between align-items-center mb-2">
-            <h5>Ventas por Vendedor</h5>
+            <h5>ventas por Vendedor</h5>
             <div class="d-flex gap-2">
               <select name="vendedor" class="form-select form-select-sm">
                 <option value="">Todos</option>
@@ -168,7 +168,7 @@ new Chart(document.getElementById('graficoSemanal'), {
   data: {
     labels: semanal.map(e => e.dia),
     datasets: [{
-      label: 'S/ Ventas',
+      label: 'S/ ventas',
       data: semanal.map(e => e.total),
       backgroundColor: 'rgba(54, 162, 235, 0.6)'
     }]
@@ -185,7 +185,7 @@ new Chart(document.getElementById('graficoMensual'), {
   data: {
     labels: labelsMensuales,
     datasets: [{
-      label: 'S/ Ventas',
+      label: 'S/ ventas',
       data: dataMensual,
       borderColor: 'green',
       backgroundColor: 'rgba(0,128,0,0.2)',
@@ -211,7 +211,7 @@ new Chart(document.getElementById('graficoAnual'), {
   data: {
     labels: labelsMensuales,
     datasets: [{
-      label: 'S/ Ventas',
+      label: 'S/ ventas',
       data: Array.from({length: 12}, (_, i) => {
         const found = anual.find(e => parseInt(e.mes) === i + 1);
         return found ? found.total : 0;
