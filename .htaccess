@@ -1,9 +1,6 @@
 # Forzar la URL a ser siempre relativa al dominio
 RewriteEngine On
 
-# Base del proyecto
-RewriteBase /Botica-bienestar-y-salud/
-
 # Redirigir al index
 RewriteRule ^$ frontend/views/index.html [L]
 
@@ -14,7 +11,7 @@ RewriteRule ^frontend/(.*)$ frontend/$1 [L]
 RewriteRule ^backend/auth/(.*)$ - [L]
 
 # ✅ EXCEPCIÓN PARA LOS CONTROLADORES (AJAX / GRÁFICOS)
-RewriteCond %{REQUEST_URI} !^/Botica-bienestar-y-salud/backend/controllers/
-RewriteCond %{REQUEST_URI} !^/Botica-bienestar-y-salud/backend/auth/
-RewriteCond %{REQUEST_URI} !^/Botica-bienestar-y-salud/backend/exports/
+RewriteCond %{REQUEST_URI} !^/backend/controllers/
+RewriteCond %{REQUEST_URI} !^/backend/auth/
+RewriteCond %{REQUEST_URI} !^/backend/exports/
 RewriteRule ^backend/(.*)\.php$ - [F]
