@@ -34,11 +34,11 @@ if (!empty($medicamento)) {
 $sql = "
     SELECT v.id_venta, v.fecha, u.usuario, m.nombre AS medicamento, s.cantidad, l.precio_unitario, 
            (s.cantidad * l.precio_unitario) AS total
-    FROM Ventas v
-    JOIN Usuarios u ON v.id_usuario = u.id_usuario
-    JOIN SalidaLotes s ON v.id_venta = s.id_venta
-    JOIN Lotes l ON s.id_lote = l.id_lote
-    JOIN Medicamentos m ON l.id_medicamento = m.id_medicamento
+    FROM ventas v
+    JOIN usuarios u ON v.id_usuario = u.id_usuario
+    JOIN salidalotes s ON v.id_venta = s.id_venta
+    JOIN lotes l ON s.id_lote = l.id_lote
+    JOIN medicamentos m ON l.id_medicamento = m.id_medicamento
     $filtro
     ORDER BY v.fecha DESC
 ";
@@ -49,8 +49,8 @@ $reportes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $totalGeneral = array_sum(array_column($reportes, 'total'));
 
 // Filtros desplegables
-$usuarios = $conn->query("SELECT DISTINCT usuario FROM Usuarios WHERE rol = 'vendedor'")->fetchAll(PDO::FETCH_ASSOC);
-$medicamentos = $conn->query("SELECT DISTINCT nombre FROM Medicamentos")->fetchAll(PDO::FETCH_ASSOC);
+$usuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol = 'vendedor'")->fetchAll(PDO::FETCH_ASSOC);
+$medicamentos = $conn->query("SELECT DISTINCT nombre FROM medicamentos")->fetchAll(PDO::FETCH_ASSOC);
 
 // Para exportar
 $exportParams = http_build_query([
@@ -65,7 +65,7 @@ $exportParams = http_build_query([
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Reportes de Ventas</title>
+  <title>Reportes de ventas</title>
   <link rel="stylesheet" href="../assets/css/dashboard.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -73,7 +73,7 @@ $exportParams = http_build_query([
 </head>
 <body>
 <div class="container p-4">
-  <h2>Reportes de Ventas</h2>
+  <h2>Reportes de ventas</h2>
   <a href="dashboard_admin.php" class="btn btn-outline-secondary mb-3">
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>

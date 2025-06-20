@@ -22,9 +22,9 @@ if (!empty($desde) && !empty($hasta)) {
 // Consulta principal
 $query = "
     SELECT v.id_venta, v.fecha, v.total, u.usuario, c.nombre_completo AS cliente
-    FROM Ventas v
-    JOIN Usuarios u ON v.id_usuario = u.id_usuario
-    JOIN Clientes c ON v.id_cliente = c.id_cliente
+    FROM ventas v
+    JOIN usuarios u ON v.id_usuario = u.id_usuario
+    JOIN clientes c ON v.id_cliente = c.id_cliente
     $condicion
     ORDER BY v.fecha DESC
 ";
@@ -41,7 +41,7 @@ $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Historial de Ventas</title>
+  <title>Historial de ventas</title>
   <link rel="stylesheet" href="../assets/css/dashboard.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -49,7 +49,7 @@ $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <div class="container p-4">
-  <h2>Historial de Ventas</h2>
+  <h2>Historial de ventas</h2>
   <a href="dashboard_admin.php" class="btn btn-outline-secondary mb-3">
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>

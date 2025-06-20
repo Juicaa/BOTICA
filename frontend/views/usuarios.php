@@ -13,7 +13,7 @@ if (isset($_POST['crear'])) {
     $nuevaContra = $_POST['nueva_contrasena'];
     $rol = 'vendedor';
 
-    $stmt = $conn->prepare("INSERT INTO Usuarios (usuario, contraseña, rol) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO usuarios (usuario, contraseña, rol) VALUES (?, ?, ?)");
     $stmt->execute([$nuevoUsuario, $nuevaContra, $rol]);
     header("Location: usuarios.php");
     exit();
@@ -23,7 +23,7 @@ if (isset($_POST['crear'])) {
 if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
 
-    $verificar = $conn->prepare("SELECT COUNT(*) as total FROM Ventas WHERE id_usuario = ?");
+    $verificar = $conn->prepare("SELECT COUNT(*) as total FROM ventas WHERE id_usuario = ?");
     $verificar->execute([$id]);
     $dato = $verificar->fetch(PDO::FETCH_ASSOC);
 
@@ -32,7 +32,7 @@ if (isset($_GET['eliminar'])) {
         exit();
     }
 
-    $stmt = $conn->prepare("DELETE FROM Usuarios WHERE id_usuario = ?");
+    $stmt = $conn->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
     $stmt->execute([$id]);
     header("Location: usuarios.php");
     exit();
@@ -44,14 +44,14 @@ if (isset($_POST['editar'])) {
     $usuarioEditado = $_POST['usuario_editado'];
     $contraEditada = $_POST['contrasena_editada'];
 
-    $stmt = $conn->prepare("UPDATE Usuarios SET usuario = ?, contraseña = ? WHERE id_usuario = ?");
+    $stmt = $conn->prepare("UPDATE usuarios SET usuario = ?, contraseña = ? WHERE id_usuario = ?");
     $stmt->execute([$usuarioEditado, $contraEditada, $idEditar]);
     header("Location: usuarios.php");
     exit();
 }
 
 // Obtener todos los usuarios vendedores
-$stmt = $conn->prepare("SELECT id_usuario, usuario, rol FROM Usuarios WHERE rol = 'vendedor'");
+$stmt = $conn->prepare("SELECT id_usuario, usuario, rol FROM usuarios WHERE rol = 'vendedor'");
 $stmt->execute();
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -60,7 +60,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Usuarios</title>
+  <title>usuarios</title>
   <link rel="stylesheet" href="../assets/css/dashboard.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -68,7 +68,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <div class="container p-4">
-  <h2>Usuarios - Vendedores</h2>
+  <h2>usuarios - Vendedores</h2>
   <a href="dashboard_admin.php" class="btn btn-outline-secondary mb-3">
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>

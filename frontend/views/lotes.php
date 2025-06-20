@@ -35,14 +35,14 @@ if (isset($_GET['eliminar'])) {
         echo "<script>alert('❌ No se puede eliminar este lote porque tiene salidas registradas.'); window.location.href='lotes.php';</script>";
         exit();
     }
-    $stmt = $conn->prepare("DELETE FROM Lotes WHERE id_lote = ?");
+    $stmt = $conn->prepare("DELETE FROM lotes WHERE id_lote = ?");
     $stmt->execute([$_GET['eliminar']]);
     header("Location: lotes.php");
     exit();
 }
 
-$medicamentos = $conn->query("SELECT * FROM Medicamentos")->fetchAll(PDO::FETCH_ASSOC);
-$lotes = $conn->query("SELECT l.*, m.nombre AS medicamento FROM Lotes l JOIN Medicamentos m ON l.id_medicamento = m.id_medicamento ORDER BY l.id_lote DESC")->fetchAll(PDO::FETCH_ASSOC);
+$medicamentos = $conn->query("SELECT * FROM medicamentos")->fetchAll(PDO::FETCH_ASSOC);
+$lotes = $conn->query("SELECT l.*, m.nombre AS medicamento FROM lotes l JOIN medicamentos m ON l.id_medicamento = m.id_medicamento ORDER BY l.id_lote DESC")->fetchAll(PDO::FETCH_ASSOC);
 $hoy = new DateTime();
 ?>
 
