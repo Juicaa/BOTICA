@@ -10,7 +10,7 @@ require '../../backend/config/conexion.php';
 // Crear categoría
 if (isset($_POST['crear'])) {
     $nombre = trim($_POST['nombre']);
-    $stmt = $conn->prepare("INSERT INTO Categorias (nombre) VALUES (:nombre)");
+    $stmt = $conn->prepare("INSERT INTO categorias (nombre) VALUES (:nombre)");
     $stmt->bindParam(':nombre', $nombre);
     $stmt->execute();
     header("Location: categorias.php");
@@ -21,7 +21,7 @@ if (isset($_POST['crear'])) {
 if (isset($_POST['editar'])) {
     $id = $_POST['id_editar'];
     $nombre = trim($_POST['nombre_editado']);
-    $stmt = $conn->prepare("UPDATE Categorias SET nombre = :nombre WHERE id_categoria = :id");
+    $stmt = $conn->prepare("UPDATE categorias SET nombre = :nombre WHERE id_categoria = :id");
     $stmt->bindParam(':nombre', $nombre);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -32,7 +32,7 @@ if (isset($_POST['editar'])) {
 // Eliminar categoría
 if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
-    $stmt = $conn->prepare("DELETE FROM Categorias WHERE id_categoria = :id");
+    $stmt = $conn->prepare("DELETE FROM categorias WHERE id_categoria = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     header("Location: categorias.php");
@@ -40,7 +40,7 @@ if (isset($_GET['eliminar'])) {
 }
 
 // Obtener todas las categorías
-$stmt = $conn->prepare("SELECT * FROM Categorias ORDER BY id_categoria DESC");
+$stmt = $conn->prepare("SELECT * FROM categorias ORDER BY id_categoria DESC");
 $stmt->execute();
 $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
