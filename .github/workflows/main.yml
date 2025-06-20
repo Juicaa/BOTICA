@@ -34,13 +34,13 @@ jobs:
       - name: Run PHPStan (static analysis)
         run: |
           if [ -f vendor/bin/phpstan ]; then
-            vendor/bin/phpstan analyse --no-progress --memory-limit=1G || true
+            vendor/bin/phpstan analyse --no-progress --memory-limit=1G backend/ || true
           fi
 
       - name: Run PHP_CodeSniffer (code style)
         run: |
           if [ -f vendor/bin/phpcs ]; then
-            vendor/bin/phpcs --standard=PSR12 src/ || true
+            vendor/bin/phpcs --standard=PSR12 backend/ || true
           fi
 
       - name: Run PHPUnit tests
