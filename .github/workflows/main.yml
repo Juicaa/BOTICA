@@ -1,39 +1,68 @@
-name: CI/CD Pipeline
+name: CI
 
 on:
   push:
     branches:
       - main
+  pull_request:
 
 jobs:
-  test:
+  php-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.2' # Cambia este valor según tu versión
 
-      - name: Install dependencies with Composer
-        run: composer install
+      - name: Install dependencies (composer)
+        run: |
+          if [ -f composer.json ]; then
+            composer install --no-progress --no-suggest --prefer-dist
+          fi
 
-      # Elimina/Comenta PHPUnit si no tienes tests
-      # - name: Run PHPUnit tests
-      #   run: vendor/bin/phpunit --configuration phpunit.xml
+      - name: Run PHPUnit tests
+        run: |
+          if [ -f vendor/bin/phpunit ]; then
+            vendor/bin/phpunit
+          fi
 
-      # Elimina/Comenta Stylelint si no tienes configuración
-      # - name: Install Stylelint
-      #   run: npm install stylelint --save-dev
+  js-css-html-lint:
+    runs-on: ubuntu-latest
 
-      # - name: Run Stylelint on CSS files
-      #   run: npx stylelint "**/*.css"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # Elimina/Comenta HTMLHint si no tienes configuración
-      # - name: Install HTMLHint
-      #   run: npm install htmlhint --save-dev
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      # - name: Run HTMLHint on HTML files
-      #   run: npx htmlhint "**/*.html"
+      - name: Install JS/CSS/HTML dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          fi
+
+      - name: Run JS lint (eslint)
+        run: |
+          if [ -f node_modules/.bin/eslint ]; then
+            npx eslint . || true
+          fi
+
+      - name: Run CSS lint (stylelint)
+        run: |
+          if [ -f node_modules/.bin/stylelint ]; then
+            npx stylelint "**/*.css" || true
+          fi
+
+      - name: Run HTML lint (htmlhint)
+        run: |
+          if [ -f node_modules/.bin/htmlhint ]; then
+            npx htmlhint "**/*.html" || true
+          fi
