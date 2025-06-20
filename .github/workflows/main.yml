@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  php-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install dependencies (composer)
+        run: |
+          if [ -f composer.json ]; then
+            composer install --no-progress --no-suggest --prefer-dist
+          fi
+
+      - name: Run PHPStan (static analysis)
+        run: |
+          if [ -f vendor/bin/phpstan ]; then
+            vendor/bin/phpstan analyse --no-progress --memory-limit=1G || true
+          fi
+
+      - name: Run PHP_CodeSniffer (code style)
+        run: |
+          if [ -f vendor/bin/phpcs ]; then
+            vendor/bin/phpcs --standard=PSR12 src/ || true
+          fi
+
+      - name: Run PHPUnit tests
+        run: |
+          if [ -f vendor/bin/phpunit ]; then
+            vendor/bin/phpunit
+          fi
+
+      - name: PHPUnit Coverage
+        run: |
+          if [ -f vendor/bin/phpunit ]; then
+            vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml || true
+          fi
+
+  js-css-html-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cache Node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install JS/CSS/HTML dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          fi
+
+      - name: Run npm audit (security)
+        run: |
+          if [ -f package.json ]; then
+            npm audit --audit-level=moderate || true
+          fi
+
+      - name: Run JS lint (eslint)
+        run: |
+          if [ -f node_modules/.bin/eslint ]; then
+            npx eslint . || true
+          fi
+
+      - name: Run CSS lint (stylelint)
+        run: |
+          if [ -f node_modules/.bin/stylelint ]; then
+            npx stylelint "**/*.css" || true
+          fi
+
+      - name: Run HTML lint (htmlhint)
+        run: |
+          if [ -f node_modules/.bin/htmlhint ]; then
+            npx htmlhint "**/*.html" || true
+          fi
+
+      - name: Run Prettier (format check)
+        run: |
+          if [ -f node_modules/.bin/prettier ]; then
+            npx prettier --check . || true
+          fi
+
+      - name: Run JS tests (Jest)
+        run: |
+          if [ -f node_modules/.bin/jest ]; then
+            npx jest || true
+          fi
