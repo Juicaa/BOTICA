@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$dbname = 'boticabienestar'; // Tu base de datos
-$username = 'root';           // Cambia si usas otro usuario
-$password = '';               // Deja vacío si no tienes contraseña en Laragon
+$dbname = 'u537253387_botica'; // Tu base de datos
+$username = 'u537253387_botica';           // Cambia si usas otro usuario
+$password = 'u537253387B';               // Deja vacío si no tienes contraseña en Laragon
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
