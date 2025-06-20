@@ -12,7 +12,7 @@ if (isset($_POST['crear'])) {
     $nombre = $_POST['nombre'];
     $categoria = $_POST['id_categoria'];
 
-    $stmt = $conn->prepare("INSERT INTO Medicamentos (nombre, id_categoria) VALUES (?, ?)");
+    $stmt = $conn->prepare("INSERT INTO medicamentos (nombre, id_categoria) VALUES (?, ?)");
     $stmt->execute([$nombre, $categoria]);
     header("Location: medicamentos.php");
     exit();
@@ -24,7 +24,7 @@ if (isset($_POST['editar'])) {
     $nombre = $_POST['nombre_editado'];
     $categoria = $_POST['categoria_editada'];
 
-    $stmt = $conn->prepare("UPDATE Medicamentos SET nombre = ?, id_categoria = ? WHERE id_medicamento = ?");
+    $stmt = $conn->prepare("UPDATE medicamentos SET nombre = ?, id_categoria = ? WHERE id_medicamento = ?");
     $stmt->execute([$nombre, $categoria, $id]);
     header("Location: medicamentos.php");
     exit();
@@ -33,7 +33,7 @@ if (isset($_POST['editar'])) {
 // Eliminar medicamento
 if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
-    $stmt = $conn->prepare("DELETE FROM Medicamentos WHERE id_medicamento = ?");
+    $stmt = $conn->prepare("DELETE FROM medicamentos WHERE id_medicamento = ?");
     $stmt->execute([$id]);
     header("Location: medicamentos.php");
     exit();
@@ -42,13 +42,13 @@ if (isset($_GET['eliminar'])) {
 // Obtener medicamentos con sus categorías
 $stmt = $conn->prepare("SELECT m.id_medicamento, m.nombre, c.nombre AS categoria, c.id_categoria 
                         FROM Medicamentos m 
-                        JOIN Categorias c ON m.id_categoria = c.id_categoria 
+                        JOIN categorias c ON m.id_categoria = c.id_categoria 
                         ORDER BY m.id_medicamento DESC");
 $stmt->execute();
 $medicamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Obtener todas las categorías
-$categorias = $conn->query("SELECT * FROM Categorias")->fetchAll(PDO::FETCH_ASSOC);
+$categorias = $conn->query("SELECT * FROM categorias")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
