@@ -11,16 +11,16 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 require '../../backend/config/conexion.php';
 
 // Consultas usando PDO para obtener los datos
-$totalMedicamentos = $conn->query("SELECT COUNT(*) FROM Medicamentos")->fetchColumn();
-$stockTotal = $conn->query("SELECT COALESCE(SUM(cantidad), 0) FROM Lotes")->fetchColumn();
+$totalmedicamentos = $conn->query("SELECT COUNT(*) FROM medicamentos")->fetchColumn();
+$stockTotal = $conn->query("SELECT COALESCE(SUM(cantidad), 0) FROM lotes")->fetchColumn();
 $hoy = date('Y-m-d');
 $limite = date('Y-m-d', strtotime('+15 days'));
 
-$lotesPorVencerStmt = $conn->prepare("SELECT COUNT(*) FROM Lotes WHERE fecha_vencimiento BETWEEN ? AND ?");
+$lotesPorVencerStmt = $conn->prepare("SELECT COUNT(*) FROM lotes WHERE fecha_vencimiento BETWEEN ? AND ?");
 $lotesPorVencerStmt->execute([$hoy, $limite]);
 $lotesPorVencer = $lotesPorVencerStmt->fetchColumn();
 
-$ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM Ventas WHERE DATE(fecha) = CURDATE()")->fetchColumn();
+$ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE(fecha) = CURDATE()")->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +41,10 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM Ventas WHERE DATE
       <ul class="nav flex-column">
         <li class="nav-item"><a class="nav-link active" href="dashboard_admin.php"><i class="bi bi-house-door"></i> Dashboard</a></li>
         <li class="nav-item"><a class="nav-link" href="usuarios.php"><i class="bi bi-person"></i> Usuarios</a></li>
-        <li class="nav-item"><a class="nav-link" href="medicamentos.php"><i class="bi bi-capsule-pill"></i> Medicamentos</a></li>
+        <li class="nav-item"><a class="nav-link" href="medicamentos.php"><i class="bi bi-capsule-pill"></i> medicamentos</a></li>
         <li class="nav-item"><a class="nav-link" href="categorias.php"><i class="bi bi-tags"></i> Categorías</a></li>
-        <li class="nav-item"><a class="nav-link" href="lotes.php"><i class="bi bi-box-seam"></i> Lotes</a></li>
-        <li class="nav-item"><a class="nav-link" href="ventas.php"><i class="bi bi-cart-check"></i> Ventas</a></li>
+        <li class="nav-item"><a class="nav-link" href="lotes.php"><i class="bi bi-box-seam"></i> lotes</a></li>
+        <li class="nav-item"><a class="nav-link" href="ventas.php"><i class="bi bi-cart-check"></i> ventas</a></li>
         <li class="nav-item"><a class="nav-link" href="alertas.php"><i class="bi bi-bell"></i> Alertas</a></li>
         <li class="nav-item"><a class="nav-link" href="reportes.php"><i class="bi bi-bar-chart-line"></i> Reportes</a></li>
         <li class="nav-item"><a class="nav-link" href="estadisticas.php"><i class="bi bi-graph-up"></i> Estadísticas</a></li>
@@ -60,8 +60,8 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM Ventas WHERE DATE
       <div class="row g-3">
         <div class="col-md-3">
           <div class="card shadow-sm text-center p-3">
-            <h6>Total Medicamentos</h6>
-            <h4><?php echo $totalMedicamentos; ?></h4>
+            <h6>Total medicamentos</h6>
+            <h4><?php echo $totalmedicamentos; ?></h4>
           </div>
         </div>
         <div class="col-md-3">
@@ -72,13 +72,13 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM Ventas WHERE DATE
         </div>
         <div class="col-md-3">
           <div class="card shadow-sm text-center p-3">
-            <h6>Lotes por Vencer</h6>
+            <h6>lotes por Vencer</h6>
             <h4><?php echo $lotesPorVencer; ?></h4>
           </div>
         </div>
         <div class="col-md-3">
           <div class="card shadow-sm text-center p-3">
-            <h6>Ventas del Día</h6>
+            <h6>ventas del Día</h6>
             <h4>S/ <?php echo number_format($ventasHoy, 2); ?></h4>
           </div>
         </div>
