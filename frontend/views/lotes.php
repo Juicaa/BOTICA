@@ -9,7 +9,7 @@ require '../../backend/config/conexion.php';
 
 // Crear lote
 if (isset($_POST['crear'])) {
-    $stmt = $conn->prepare("INSERT INTO Lotes (id_medicamento, cantidad, fecha_ingreso, fecha_vencimiento, precio_unitario) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO lotes (id_medicamento, cantidad, fecha_ingreso, fecha_vencimiento, precio_unitario) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([
         $_POST['id_medicamento'], $_POST['cantidad'], $_POST['fecha_ingreso'], $_POST['fecha_vencimiento'], $_POST['precio_unitario']
     ]);
@@ -19,7 +19,7 @@ if (isset($_POST['crear'])) {
 
 // Editar lote
 if (isset($_POST['editar'])) {
-    $stmt = $conn->prepare("UPDATE Lotes SET cantidad=?, fecha_ingreso=?, fecha_vencimiento=?, precio_unitario=? WHERE id_lote=?");
+    $stmt = $conn->prepare("UPDATE lotes SET cantidad=?, fecha_ingreso=?, fecha_vencimiento=?, precio_unitario=? WHERE id_lote=?");
     $stmt->execute([
         $_POST['cantidad_editada'], $_POST['fecha_ingreso_editada'], $_POST['fecha_vencimiento_editada'], $_POST['precio_editado'], $_POST['id_editar']
     ]);
@@ -50,7 +50,7 @@ $hoy = new DateTime();
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Gestión de Lotes</title>
+  <title>Gestión de lotes</title>
   <link rel="stylesheet" href="../assets/css/dashboard.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -59,7 +59,7 @@ $hoy = new DateTime();
 </head>
 <body>
 <div class="container p-4">
-  <h2>Gestión de Lotes</h2>
+  <h2>Gestión de lotes</h2>
   <a href="dashboard_admin.php" class="btn btn-outline-secondary mb-3"><i class="bi bi-arrow-left-circle"></i> Volver al Dashboard</a>
 
   <div class="card mb-4">
