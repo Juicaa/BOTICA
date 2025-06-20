@@ -30,7 +30,7 @@ if (!empty($medicamento)) {
 $sql = "SELECT v.id_venta, v.fecha, u.usuario, m.nombre AS medicamento, s.cantidad, 
                l.precio_unitario, (s.cantidad * l.precio_unitario) AS total
         FROM ventas v
-        JOIN Usuarios u ON v.id_usuario = u.id_usuario
+        JOIN usuarios u ON v.id_usuario = u.id_usuario
         JOIN SalidaLotes s ON v.id_venta = s.id_venta
         JOIN Lotes l ON s.id_lote = l.id_lote
         JOIN Medicamentos m ON l.id_medicamento = m.id_medicamento
