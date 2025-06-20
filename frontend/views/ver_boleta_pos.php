@@ -60,7 +60,8 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
   </style>
 </head>
-<body>
+<center>
+  <body>
   <div class="center bold">Botica Bienestar y Salud</div>
   <center><div class="text-center mb-3"><img width="100px" height="100px" src="../assets/img/logo_botica.png" alt="Botica Bienestar y Salud" class="login-logo" /></div></center>
     <div class="center">Fecha: <?= $venta['fecha'] ?></div>
@@ -87,4 +88,5 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <button onclick="window.print()" style="margin-top:10px; width:100%;">🖨️ Imprimir</button>
 </body>
+</center>
 </html>
