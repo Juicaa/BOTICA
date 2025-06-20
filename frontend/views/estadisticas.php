@@ -29,15 +29,15 @@ $ventas_anuales = $stmtAnual->fetchAll(PDO::FETCH_ASSOC);
 // --- VENTAS POR VENDEDOR ---
 $vendedorSeleccionado = $_GET['vendedor'] ?? '';
 if ($vendedorSeleccionado) {
-    $stmtVendedor = $conn->prepare("SELECT u.usuario, SUM(v.total) as total FROM ventas v JOIN Usuarios u ON v.id_usuario = u.id_usuario WHERE u.usuario = ? GROUP BY u.usuario");
+    $stmtVendedor = $conn->prepare("SELECT u.usuario, SUM(v.total) as total FROM ventas v JOIN usuarios u ON v.id_usuario = u.id_usuario WHERE u.usuario = ? GROUP BY u.usuario");
     $stmtVendedor->execute([$vendedorSeleccionado]);
 } else {
-    $stmtVendedor = $conn->query("SELECT u.usuario, SUM(v.total) as total FROM ventas v JOIN Usuarios u ON v.id_usuario = u.id_usuario GROUP BY u.usuario");
+    $stmtVendedor = $conn->query("SELECT u.usuario, SUM(v.total) as total FROM ventas v JOIN usuarios u ON v.id_usuario = u.id_usuario GROUP BY u.usuario");
 }
 $vendedores = $stmtVendedor->fetchAll(PDO::FETCH_ASSOC);
 $totalVendedor = array_sum(array_column($vendedores, 'total'));
 $totalGeneral = $conn->query("SELECT SUM(total) FROM ventas")->fetchColumn() ?: 1;
-$listaUsuarios = $conn->query("SELECT DISTINCT usuario FROM Usuarios WHERE rol = 'vendedor'")->fetchAll(PDO::FETCH_COLUMN);
+$listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol = 'vendedor'")->fetchAll(PDO::FETCH_COLUMN);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -127,7 +127,7 @@ $listaUsuarios = $conn->query("SELECT DISTINCT usuario FROM Usuarios WHERE rol =
             <div class="d-flex gap-2">
               <select name="vendedor" class="form-select form-select-sm">
                 <option value="">Todos</option>
-                <?php foreach ($listaUsuarios as $usuario): ?>
+                <?php foreach ($listausuarios as $usuario): ?>
                   <option value="<?= $usuario ?>" <?= $vendedorSeleccionado == $usuario ? 'selected' : '' ?>><?= $usuario ?></option>
                 <?php endforeach; ?>
               </select>
