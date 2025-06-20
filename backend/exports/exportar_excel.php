@@ -29,7 +29,7 @@ if (!empty($medicamento)) {
 
 $sql = "SELECT v.id_venta, v.fecha, u.usuario, m.nombre AS medicamento, s.cantidad, 
                l.precio_unitario, (s.cantidad * l.precio_unitario) AS total
-        FROM Ventas v
+        FROM ventas v
         JOIN Usuarios u ON v.id_usuario = u.id_usuario
         JOIN SalidaLotes s ON v.id_venta = s.id_venta
         JOIN Lotes l ON s.id_lote = l.id_lote
@@ -43,7 +43,7 @@ $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
-$sheet->setTitle("Ventas");
+$sheet->setTitle("ventas");
 
 $sheet->fromArray(
     ['ID Venta', 'Fecha', 'Usuario', 'Medicamento', 'Cantidad', 'Precio Unitario', 'Total'],
