@@ -26,7 +26,7 @@ $query = "
     JOIN usuarios u ON v.id_usuario = u.id_usuario
     JOIN clientes c ON v.id_cliente = c.id_cliente
     $condicion
-    ORDER BY v.fecha ASC
+    ORDER BY v.fecha DESC
 ";
 
 $stmt = $conn->prepare($query);
