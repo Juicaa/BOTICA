@@ -128,33 +128,3 @@ a:hover {
   }
   
 }
-
-/* Menú lateral */
-.nav-link {
-  margin-bottom: 10px; /* Espacio entre botones */
-  padding: 10px 15px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  color: #2b2b2b;
-  transition: background-color 0.2s ease;
-}
-
-.nav-link i {
-  font-size: 1.1rem;
-}
-
-.nav-link.active {
-  background-color: #54cc96;
-  color: rgb(0, 0, 0) !important;
-}
-
-.nav-item {
-    color: rgb(0, 0, 0) !important;
-}
-
-.nav-link {
-    color: rgb(0, 0, 0) !important;
-}
