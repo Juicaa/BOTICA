@@ -2,8 +2,8 @@
 body {
   font-family: 'Courier New', monospace;
   font-size: 12px;
-  width: 230px;
-  margin: 0 auto;
+  width: 230px; /* Asegura que la boleta tenga un tamaño adecuado */
+  margin: 0 auto; /* Centrado automático */
   color: #000;
   text-align: left; /* Alineación de texto */
 }
@@ -75,6 +75,7 @@ body {
   background-color: #fff;
   width: 230px; /* Asegura que la boleta no sea más ancha que el área definida */
   margin: 0 auto; /* Centrado */
+  position: relative; /* Asegura que se posicione correctamente */
 }
 
 /* Estilo del botón de impresión */
