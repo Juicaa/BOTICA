@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Menú lateral */
 .nav-link {
   margin-bottom: 10px; /* Espacio entre botones */
   padding: 10px 15px;
@@ -73,27 +73,51 @@
     display: block; /* Se muestra en móviles */
   }
 
-  /* Ocultar el menú lateral por defecto en pantallas pequeñas */
+  /* Menú lateral - Ajuste en pantallas pequeñas */
   #menuLateral {
-    left: -250px;
+    left: -250px; /* El menú comienza oculto en dispositivos pequeños */
   }
 
-  /* Menú lateral activo */
   #menuLateral.active {
-    left: 0;
+    left: 0; /* El menú se mueve a la izquierda cuando está activo */
   }
 
+  /* Contenido cuando el menú está activo */
+  .content {
+    margin-left: 0; /* Asegura que el contenido no se desplace en pantallas pequeñas */
+  }
+
+  /* Ajustes para los enlaces de menú */
   .nav-link {
     font-size: 16px;
+    padding: 10px;
   }
 
-  /* Cuando el menú está abierto, el contenido de la página se mueve */
-  .content {
-    margin-left: 250px;
-  }
-
-  /* Ajustes para el contenido en móviles */
+  /* El contenido se ajusta mejor en móviles */
   .d-flex {
     flex-direction: column;
+    width: 100%; /* Asegura que el contenido se ajuste al 100% del ancho */
+  }
+}
+
+@media (max-width: 480px) {
+  /* En pantallas muy pequeñas (teléfonos) */
+  .menu-toggle {
+    font-size: 28px;
+  }
+
+  /* Asegura que los elementos del menú estén bien distribuidos */
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .nav-item {
+    font-size: 12px;
+  }
+
+  /* Ajustar las tarjetas en el dashboard */
+  .card {
+    font-size: 14px;
+    padding: 10px;
   }
 }
