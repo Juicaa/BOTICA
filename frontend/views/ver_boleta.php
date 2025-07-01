@@ -95,15 +95,10 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
 <div class="boleta-actions">
-  <a href="ver_boleta_pos.php?id_venta=<?= $id_venta ?>" class="btn btn-warning btn-sm" target="_blank">
-  <i class="bi bi-printer"></i> Imprimir</a>
-  
-  <a href="realizar_venta.php" class="btn btn-outline-dark">
-    <i class="bi bi-arrow-left-circle"></i> Regresar
+  <a href="ver_boleta_pos.php?id_venta=<?= $id_venta ?>" class="btn btn-warning btn-sm" target="_blank"><i class="bi bi-printer"></i> Imprimir</a>
+    <a href="realizar_venta.php" class="btn btn-outline-dark" target="_blank"><i class="bi bi-arrow-left-circle"></i> Regresar
   </a>
 </div>
-
-
 </div>
 </body>
 </html>
