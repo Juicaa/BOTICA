@@ -14,6 +14,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'vendedor') {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link href="../assets/css/footer.css" rel="stylesheet" />
 </head>
 <body>
 <div class="d-flex" style="min-height: 100vh;">
