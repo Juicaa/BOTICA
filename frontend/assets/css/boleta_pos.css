@@ -5,18 +5,12 @@ body {
   width: 230px; /* Asegura un tamaño adecuado para la boleta */
   margin: 0 auto; /* Centrado horizontal */
   color: #000;
-  text-align: center /* Alineación de texto */
-}
-body::before {
-  content: "";
-  background: url('../img/fondo_login.jpg') no-repeat center center / cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.35;
-  z-index: -1;
+  text-align: center; /* Alineación de texto */
+  background-image: url('../img/fondo_login.jpg'); /* Fondo de pantalla */
+  background-size: cover; /* Hace que el fondo cubra toda la pantalla */
+  background-position: center; /* Centra el fondo */
+  background-attachment: fixed; /* Hace que el fondo no se mueva al hacer scroll */
+  opacity: 0.35; /* Ajusta la opacidad del fondo */
 }
 
 .center {
@@ -67,6 +61,7 @@ body::before {
     font-size: 12px;
     width: auto;
     margin: 0;
+    background: none; /* Quita el fondo para la impresión */
   }
 
   .boleta-header, .boleta-footer {
@@ -92,10 +87,13 @@ body::before {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
   width: 230px; /* Asegura que la boleta tenga un tamaño adecuado */
   margin: 30 auto; /* Centrado */
   position: relative;
+  z-index: 1;
+  color: #000; /* Asegura que el texto sea legible */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para hacer que la boleta resalte */
 }
 
 /* Estilo del botón de impresión */
@@ -112,4 +110,3 @@ body::before {
 .btn-print:hover {
   background-color: #45a37f;
 }
-
