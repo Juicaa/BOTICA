@@ -27,7 +27,7 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Administrador</title>  
+  <title>Administrador</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/css/dashboard.css">  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
@@ -73,11 +73,9 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
 
     </div>
   </div>
-<!-- Asegúrate de colocar este enlace justo antes del cierre de la etiqueta </body> -->
-<script src="../js/menu_lateral.js"></script>
-
-<script src="../js/dashboard_administrador.js"></script>
+  <!-- Asegúrate de colocar este enlace justo antes del cierre de la etiqueta </body> -->
+  <script src="../js/menu_lateral.js"></script>
+  <script src="../js/dashboard_administrador.js"></script>
 
 </body>
 </html>
-
