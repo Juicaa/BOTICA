@@ -5,8 +5,6 @@ body {
   width: 230px; /* Asegura un tamaño adecuado para la boleta */
   margin: 0 auto; /* Centrado horizontal */
   color: #000;
-  min-height: 100vh;
-  position: relative;
   text-align: center /* Alineación de texto */
 }
 
