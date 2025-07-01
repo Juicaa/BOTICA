@@ -69,7 +69,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <div class="container p-4">
-  <h2>usuarios - Vendedores</h2>
+  <h2>Usuarios - Vendedores</h2>
   <a href="dashboard_admin.php" class="btn btn-outline-secondary mb-3">
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>
