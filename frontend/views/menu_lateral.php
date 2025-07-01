@@ -1,9 +1,7 @@
 <!-- menu_lateral.php -->
 <nav class="bg-white border-end p-3" style="width: 250px;" id="menuLateral">
   <!-- Icono de las tres rayas (hamburger) -->
-  <div class="menu-toggle" onclick="toggleMenu()">
-    &#9776; <!-- Icono de las tres rayas -->
-  </div>
+  <a class="menu-toggle" onclick="toggleMenu()">&#9776;</a>
 
   <h5 class="text-success text-center mb-4">Administrador</h5>
   <ul class="nav flex-column">
