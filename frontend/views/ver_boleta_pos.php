@@ -29,67 +29,51 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boleta</title>
-  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <!-- Enlazar el archivo CSS de la boleta -->
+  <link rel="stylesheet" href="../assets/css/boleta_pos.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/boleta.css">
-  <style>
-    body {
-      font-family: monospace;
-      font-size: 12px;
-      width: 230px;
-      margin: 0 auto;
-      color: #000;
-    }
-    .center { text-align: center; }
-    .line { border-top: 1px dashed #000; margin: 5px 0; }
-    .bold { font-weight: bold; }
-    .total { font-size: 14px; font-weight: bold; }
-    .item { display: flex; justify-content: space-between; }
-    @media print {
-      button { display: none; }
-    }
-  </style>
-  <style>
-    body { margin: 20px; }
-    .boleta-box { border: 1px solid #ccc; padding: 20px; border-radius: 10px; }
-    .boleta-header { text-align: center; margin-bottom: 20px; }
-    .boleta-footer { text-align: right; margin-top: 20px; font-weight: bold; }
-    .btn-print { margin-top: 10px; }
-  </style>
 </head>
-<center>
-  <body>
-  <div class="center bold">Botica Bienestar y Salud</div>
-  <center><div class="text-center mb-3"><img width="100px" height="100px" src="../assets/img/logo_botica.png" alt="Botica Bienestar y Salud" class="login-logo" /></div></center>
-    <div class="center">Fecha: <?= $venta['fecha'] ?></div>
-  <div class="line"></div>
-  <div><span class="bold">Cliente:</span> <?= $venta['nombre_completo'] ?></div>
-  <div><span class="bold">DNI:</span> <?= $venta['dni'] ?></div>
-  <div><span class="bold">Vendedor:</span> <?= $venta['usuario'] ?></div>
-  <div class="line"></div>
-
-  <?php foreach ($detalles as $item): ?>
-    <div class="item">
-      <span><?= strtoupper(substr($item['medicamento'], 0, 12)) ?></span>
-      <span><?= $item['cantidad'] ?> x <?= number_format($item['precio_unitario'], 2) ?></span>
+<body>
+  <div class="boleta-box">
+    <!-- Encabezado -->
+    <div class="boleta-header">
+      <div class="center bold">Botica Bienestar y Salud</div>
+      <div class="center">
+        <img src="../assets/img/logo_botica.png" alt="Logo Botica" />
+      </div>
+      <div class="center">Fecha: <?= $venta['fecha'] ?></div>
+      <div class="line"></div>
+      <div><span class="bold">Cliente:</span> <?= $venta['nombre_completo'] ?></div>
+      <div><span class="bold">DNI:</span> <?= $venta['dni'] ?></div>
+      <div><span class="bold">Vendedor:</span> <?= $venta['usuario'] ?></div>
+      <div class="line"></div>
     </div>
-  <?php endforeach; ?>
-  <div class="line"></div>
-  <div class="item total">
-    <span>TOTAL:</span>
-    <span>S/ <?= number_format($venta['total'], 2) ?></span>
-  </div>
-  <div class="line"></div>
-  <div class="center">¡Gracias por su compra!</div>
-  <div class="center">www.boticabienestarysalud.site</div>
 
-  <button onclick="window.print()" style="margin-top:10px; width:100%;">🖨️ Imprimir</button>
+    <!-- Detalles de la venta -->
+    <?php foreach ($detalles as $item): ?>
+      <div class="item">
+        <span><?= strtoupper(substr($item['medicamento'], 0, 12)) ?></span>
+        <span><?= $item['cantidad'] ?> x <?= number_format($item['precio_unitario'], 2) ?></span>
+      </div>
+    <?php endforeach; ?>
+
+    <div class="line"></div>
+    <div class="item total">
+      <span>TOTAL:</span>
+      <span>S/ <?= number_format($venta['total'], 2) ?></span>
+    </div>
+    <div class="line"></div>
+    <div class="center">¡Gracias por su compra!</div>
+    <div class="center">www.boticabienestarysalud.site</div>
+
+    <!-- Botón de impresión -->
+    <button onclick="window.print()" class="btn-print">🖨️ Imprimir</button>
+  </div>
 </body>
-</center>
 </html>

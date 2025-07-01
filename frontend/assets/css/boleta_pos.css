@@ -1,0 +1,90 @@
+/* General para la boleta */
+body {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  width: 230px;
+  margin: 0 auto;
+  color: #000;
+}
+
+.center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.line {
+  border-top: 1px dashed #000;
+  margin: 5px 0;
+}
+
+.total {
+  font-size: 14px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+/* Estilo del encabezado */
+.boleta-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.boleta-header img {
+  width: 100px;
+  height: 100px;
+}
+
+.boleta-footer {
+  text-align: right;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Estilo de impresión */
+@media print {
+  body {
+    font-size: 12px;
+    width: auto;
+    margin: 0;
+  }
+  
+  .boleta-header, .boleta-footer {
+    margin: 0;
+  }
+  
+  button {
+    display: none;
+  }
+}
+
+/* Boleta Box */
+.boleta-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+/* Estilo del botón de impresión */
+.btn-print {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #54cc96;
+  border: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-print:hover {
+  background-color: #45a37f;
+}
