@@ -74,6 +74,8 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
 
     </div>
   </div>
+<!-- Asegúrate de colocar este enlace justo antes del cierre de la etiqueta </body> -->
+<script src="../js/menu_lateral.js"></script>
 
 <script src="../js/dashboard_administrador.js"></script>
 
