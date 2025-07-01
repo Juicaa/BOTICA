@@ -2,10 +2,10 @@
 body {
   font-family: 'Courier New', monospace;
   font-size: 12px;
-  width: 230px; /* Asegura que la boleta tenga un tamaño adecuado */
-  margin: 0 auto; /* Centrado automático */
+  width: 230px; /* Ajustamos el tamaño para que sea adecuado */
+  margin: 0 auto; /* Centramos el contenido en la página */
   color: #000;
-  text-align: left; /* Alineación de texto */
+  text-align: left; /* Alineamos el texto a la izquierda */
 }
 
 .center {
@@ -33,6 +33,17 @@ body {
   margin: 5px 0;
 }
 
+/* Asegura que la tabla esté centrada */
+table {
+  width: 100%; /* La tabla debe tomar todo el ancho disponible */
+  margin-bottom: 20px;
+}
+
+td {
+  padding: 5px;
+  text-align: left;
+}
+
 /* Estilo del encabezado */
 .boleta-header {
   text-align: center;
@@ -57,13 +68,23 @@ body {
     width: auto;
     margin: 0;
   }
-  
+
   .boleta-header, .boleta-footer {
     margin: 0;
   }
-  
+
   button {
     display: none;
+  }
+
+  .boleta-box {
+    margin: 0 auto; /* Centrar la boleta al imprimir */
+  }
+
+  /* Aseguramos que la tabla sea más compacta y se ajuste al ancho */
+  table {
+    width: 100%;
+    font-size: 12px;
   }
 }
 
