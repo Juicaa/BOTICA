@@ -27,3 +27,68 @@
 .nav-link {
     color: rgb(0, 0, 0) !important;
 }
+
+/* Estilo del icono de las tres rayas (hamburger) */
+.menu-toggle {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  display: none; /* Ocultar por defecto */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+}
+
+/* Estilos para el menú lateral */
+#menuLateral {
+  width: 250px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+#menuLateral ul {
+  padding: 0;
+  list-style: none;
+}
+
+#menuLateral ul li {
+  padding: 10px;
+}
+
+/* Cuando el menú está activo (visible) */
+#menuLateral.active {
+  left: 0; /* El menú se muestra cuando la clase 'active' está presente */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  /* Mostrar el icono de las tres rayas en móviles */
+  .menu-toggle {
+    display: block; /* Se muestra en móviles */
+  }
+
+  /* Ocultar el menú lateral por defecto en pantallas pequeñas */
+  #menuLateral {
+    left: -250px;
+  }
+
+  /* Menú lateral activo */
+  #menuLateral.active {
+    left: 0;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+
+  /* Cuando el menú está abierto, el contenido de la página se mueve */
+  .content {
+    margin-left: 250px;
+  }
+}

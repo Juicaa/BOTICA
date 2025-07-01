@@ -32,6 +32,7 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
   <link rel="stylesheet" href="../assets/css/dashboard.css">  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Incluir los estilos del menú lateral -->
   <link rel="stylesheet" href="menu_lateral.css">
 </head>
 <body>
@@ -40,7 +41,7 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
     <?php include 'menu_lateral.php'; ?>
 
     <!-- Contenido principal -->
-    <div class="flex-fill p-4">
+    <div class="flex-fill p-4 content">
       <h3 class="mb-4">Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></h3>
 
       <!-- Tarjetas resumen -->
@@ -81,3 +82,4 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
   <p>© 2025 Botica Bienestar y Salud. Todos los derechos reservados.</p>
 </footer>
 </html>
+
