@@ -70,7 +70,7 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="line"></div>
     <div class="center">¡Gracias por su compra!</div>
-    <center><div class="center">www.boticabienestarysalud.site</div></center>
+    <div class="center">www.boticabienestarysalud.site</div>
 
     <!-- Botón de impresión -->
     <button onclick="window.print()" class="btn-print">🖨️ Imprimir</button>
