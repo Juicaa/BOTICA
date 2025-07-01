@@ -15,7 +15,7 @@
     <li class="nav-item"><a class="nav-link" href="ventas.php"><i class="bi bi-cart-check"></i> Ventas</a></li>
     <li class="nav-item"><a class="nav-link" href="alertas.php"><i class="bi bi-bell"></i> Alertas</a></li>
     <li class="nav-item"><a class="nav-link" href="reportes.php"><i class="bi bi-bar-chart-line"></i> Reportes</a></li>
-    <li class="nav-item"><a class="nav-link" href="estadisticas.php"><i class="bi bi-graph-up"></i> Estadísticassssss</a></li>
+    <li class="nav-item"><a class="nav-link" href="estadisticas.php"><i class="bi bi-graph-up"></i> Estadísticas</a></li>
     <a class="btn btn-outline-danger w-100" href="../../backend/auth/logout.php">Cerrar sesión</a>
   </ul>
 </nav>
