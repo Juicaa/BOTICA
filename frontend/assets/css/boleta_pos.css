@@ -5,9 +5,15 @@ body {
   width: 230px; /* Asegura un tamaño adecuado para la boleta */
   margin: 0 auto; /* Centrado horizontal */
   color: #000;
-  text-align: center /* Alineación de texto */
+  text-align: left; /* Alineación de texto */
+  display: flex;
+  justify-content: center; /* Centrado horizontalmente */
+  align-items: center; /* Centrado verticalmente */
+  height: 100vh; /* Asegura que el contenido ocupe toda la altura de la pantalla */
+  background-color: #f2fdf5; /* Fondo suave para la página */
 }
 
+/* Alineación y estilo del contenido */
 .center {
   text-align: center;
 }
@@ -56,6 +62,7 @@ body {
     font-size: 12px;
     width: auto;
     margin: 0;
+    background: none; /* Elimina el fondo al imprimir */
   }
 
   .boleta-header, .boleta-footer {
@@ -63,7 +70,7 @@ body {
   }
 
   button {
-    display: none;
+    display: none; /* Oculta el botón de imprimir al imprimir */
   }
 
   .boleta-box {
@@ -81,10 +88,13 @@ body {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
   width: 230px; /* Asegura que la boleta tenga un tamaño adecuado */
-  margin: 30 auto; /* Centrado */
+  margin: 30px auto; /* Centrado */
   position: relative;
+  z-index: 1;
+  color: #000; /* Asegura que el texto sea legible */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para la boleta */
 }
 
 /* Estilo del botón de impresión */
@@ -101,4 +111,3 @@ body {
 .btn-print:hover {
   background-color: #45a37f;
 }
-
