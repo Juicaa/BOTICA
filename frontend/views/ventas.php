@@ -92,8 +92,8 @@ $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <td><?= htmlspecialchars($venta['usuario']) ?></td>
           <td><?= htmlspecialchars($venta['cliente']) ?></td>
           <td>
-            <a href="ver_boleta_admin.php?id_venta=<?= $venta['id_venta'] ?>" class="btn btn-warning" target="_blank">
-              <i class="bi bi-receipt"></i></a>
+            <a href="ver_boleta_admin.php?id_venta=<?= $venta['id_venta'] ?>" class="btn btn-warning" target="_blank"><i class="bi bi-receipt"></i></a>
+            <a href="ver_boleta_pos.php?id_venta=<?= $venta['id_venta'] ?>" class="btn btn-info" target="_blank"><i class="bi bi-printer"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>
