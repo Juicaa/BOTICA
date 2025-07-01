@@ -37,8 +37,8 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <!-- Enlazar el CSS de la boleta -->
   <link rel="stylesheet" href="../assets/css/boleta_pos.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
-<center>
-  <body>
+</head>
+<body>
   <div class="boleta-box">
     <!-- Encabezado -->
     <div class="boleta-header">
@@ -75,7 +75,4 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <button onclick="window.print()" class="btn-print">🖨️ Imprimir</button>
   </div>
 </body>
-</center>
-
-
 </html>
