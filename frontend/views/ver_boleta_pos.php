@@ -38,13 +38,7 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="../assets/css/boleta_pos.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
 
-    <style>
-    body { margin: 20px; }
-    .boleta-box { border: 1px solid #ccc; padding: 20px; border-radius: 10px; }
-    .boleta-header { text-align: center; margin-bottom: 20px; }
-    .boleta-footer { text-align: right; margin-top: 20px; font-weight: bold; }
-    .btn-print { margin-top: 10px; }
-  </style>
+  
 </head>
 <body>
   <div class="boleta-box">
