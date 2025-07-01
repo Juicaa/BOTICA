@@ -93,9 +93,6 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="boleta-footer">
     Total: S/ <?= number_format($venta['total'], 2) ?>
   </div>  
-  <a href="historial_ventas.php" class="btn btn-outline-dark">
-    <i class="bi bi-arrow-left-circle"></i> Regresar
-  </a>
 </div>
 
 
