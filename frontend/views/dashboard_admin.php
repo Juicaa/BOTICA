@@ -90,4 +90,7 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
 <script src="../js/dashboard_administrador.js"></script>
 
 </body>
+<footer class="footer">
+  <p>© 2025 Botica Bienestar y Salud. Todos los derechos reservados.</p>
+</footer>
 </html> 

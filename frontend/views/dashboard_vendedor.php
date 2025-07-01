@@ -39,4 +39,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'vendedor') {
   </div>
 </div>
 </body>
+<footer class="footer">
+  <p>© 2025 Botica Bienestar y Salud. Todos los derechos reservados.</p>
+</footer>
 </html>
