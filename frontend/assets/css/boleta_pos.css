@@ -5,6 +5,7 @@ body {
   width: 230px;
   margin: 0 auto;
   color: #000;
+  text-align: left; /* Alineación de texto */
 }
 
 .center {
@@ -72,6 +73,8 @@ body {
   padding: 20px;
   border-radius: 10px;
   background-color: #fff;
+  width: 230px; /* Asegura que la boleta no sea más ancha que el área definida */
+  margin: 0 auto; /* Centrado */
 }
 
 /* Estilo del botón de impresión */
