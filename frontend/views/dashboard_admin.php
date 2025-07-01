@@ -31,7 +31,6 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
   <link rel="stylesheet" href="../assets/css/dashboard.css">  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <!-- Incluir los estilos del menú lateral -->
   <link rel="stylesheet" href="menu_lateral.css">
 </head>
 <body>
