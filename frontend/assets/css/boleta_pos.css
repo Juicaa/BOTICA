@@ -83,7 +83,7 @@ body {
   border-radius: 10px;
   background-color: #fff;
   width: 230px; /* Asegura que la boleta tenga un tamaño adecuado */
-  margin: center; /* Centrado */
+  margin: 30 auto; /* Centrado */
   position: relative;
 }
 
