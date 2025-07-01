@@ -36,7 +36,7 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <title>Boleta</title>
   <!-- Enlazar el CSS de la boleta -->
   <link rel="stylesheet" href="../assets/css/boleta_pos.css">
-  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/fondo.css">
 
 </head>
 <body>
