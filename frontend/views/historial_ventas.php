@@ -50,8 +50,8 @@ $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <strong>Fecha:</strong> <?= $venta['fecha'] ?> |
             <strong>Total:</strong> S/ <?= number_format($venta['total'], 2) ?><br>
             <strong>Cliente:</strong> <?= htmlspecialchars($venta['nombre_completo']) ?> (DNI: <?= $venta['dni'] ?>)
-            <a href="ver_boleta_historial.php?id_venta=<?= $venta['id_venta'] ?>" class="btn btn-warning">
-                <i class="bi bi-receipt"></i></a>
+            <a href="ver_boleta_historial.php?id_venta=<?= $venta['id_venta'] ?>" class="btn btn-warning" target="_blank"><i class="bi bi-receipt"></i></a>
+            <a href="ver_boleta_pos.php?id_venta=<?= $venta['id_venta'] ?>" class="btn btn-info" target="_blank"><i class="bi bi-printer"></i></a>
           </div>
           <div class="card-body p-0">
             <table class="table table-bordered table-sm mb-0">
