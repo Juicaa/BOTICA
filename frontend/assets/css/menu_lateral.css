@@ -1,123 +1,68 @@
-/* Menú lateral */
-.nav-link {
-  margin-bottom: 10px; /* Espacio entre botones */
-  padding: 10px 15px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  color: #2b2b2b;
-  transition: background-color 0.2s ease;
-}
-
-.nav-link i {
-  font-size: 1.1rem;
-}
-
-.nav-link.active {
-  background-color: #54cc96;
-  color: rgb(0, 0, 0) !important;
-}
-
-.nav-item {
-  color: rgb(0, 0, 0) !important;
-}
-
-.nav-link {
-  color: rgb(0, 0, 0) !important;
-}
-
-/* Estilo del icono de tres rayas */
+/* Estilo del icono de tres rayas (hamburger) */
 .menu-toggle {
-  font-size: 30px;
-  color: #333;
-  cursor: pointer;
-  display: none; /* Ocultar por defecto */
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 1001;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    display: none; /* Ocultar por defecto */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+}
+
+/* Menú lateral dentro del contenedor */
+#menuLateralContainer {
+  position: relative; /* Asegura que el menú se posicione de forma correcta */
 }
 
 /* Estilos para el menú lateral */
 #menuLateral {
-  width: 250px;
-  background-color: #fff;
-  position: fixed;
-  top: 0;
-  left: -250px; /* El menú comienza fuera de la pantalla */
-  height: 100%;
-  transition: left 0.3s ease;
-  z-index: 1000;
+    width: 250px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: -250px; /* El menú comienza fuera de la pantalla */
+    height: 100%;
+    transition: left 0.3s ease;
+    z-index: 1000;
 }
 
 #menuLateral ul {
-  padding: 0;
-  list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 #menuLateral ul li {
-  padding: 10px;
+    padding: 10px;
 }
 
 /* Cuando el menú está activo (visible) */
 #menuLateral.active {
-  left: 0; /* El menú se mueve hacia la izquierda */
+    left: 0; /* El menú se mueve hacia la izquierda */
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
-  /* Mostrar el icono de las tres rayas en móviles */
-  .menu-toggle {
-    display: block; /* Se muestra en móviles */
-  }
+    /* Mostrar el icono de las tres rayas en móviles */
+    .menu-toggle {
+        display: block; /* Se muestra en móviles */
+    }
 
-  /* Menú lateral - Ajuste en pantallas pequeñas */
-  #menuLateral {
-    left: -250px; /* El menú comienza oculto en dispositivos pequeños */
-  }
+    /* Menú lateral - Ajuste en pantallas pequeñas */
+    #menuLateral {
+        left: -250px; /* El menú comienza oculto en dispositivos pequeños */
+    }
 
-  #menuLateral.active {
-    left: 0; /* El menú se mueve a la izquierda cuando está activo */
-  }
+    #menuLateral.active {
+        left: 0; /* El menú se mueve a la izquierda cuando está activo */
+    }
 
-  /* Contenido cuando el menú está activo */
-  .content {
-    margin-left: 0; /* Asegura que el contenido no se desplace en pantallas pequeñas */
-  }
+    /* Ajustes para el contenido en dispositivos móviles */
+    .d-flex {
+        flex-direction: column;
+    }
 
-  /* Ajustes para los enlaces de menú */
-  .nav-link {
-    font-size: 16px;
-    padding: 10px;
-  }
-
-  /* El contenido se ajusta mejor en móviles */
-  .d-flex {
-    flex-direction: column;
-    width: 100%; /* Asegura que el contenido se ajuste al 100% del ancho */
-  }
-}
-
-@media (max-width: 480px) {
-  /* En pantallas muy pequeñas (teléfonos) */
-  .menu-toggle {
-    font-size: 28px;
-  }
-
-  /* Asegura que los elementos del menú estén bien distribuidos */
-  .nav-link {
-    font-size: 14px;
-  }
-
-  .nav-item {
-    font-size: 12px;
-  }
-
-  /* Ajustar las tarjetas en el dashboard */
-  .card {
-    font-size: 14px;
-    padding: 10px;
-  }
+    .content {
+        margin-left: 0; /* Asegura que el contenido no se desplace cuando el menú está activo */
+    }
 }
