@@ -1,4 +1,4 @@
-/* Menú lateral */
+/* Estilos generales */
 .nav-link {
   margin-bottom: 10px; /* Espacio entre botones */
   padding: 10px 15px;
@@ -21,14 +21,14 @@
 }
 
 .nav-item {
-    color: rgb(0, 0, 0) !important;
+  color: rgb(0, 0, 0) !important;
 }
 
 .nav-link {
-    color: rgb(0, 0, 0) !important;
+  color: rgb(0, 0, 0) !important;
 }
 
-/* Estilo del icono de las tres rayas (hamburger) */
+/* Estilo del icono de tres rayas */
 .menu-toggle {
   font-size: 30px;
   color: #333;
@@ -46,9 +46,9 @@
   background-color: #fff;
   position: fixed;
   top: 0;
-  left: 0;
+  left: -250px; /* El menú comienza fuera de la pantalla */
   height: 100%;
-  transition: 0.3s;
+  transition: left 0.3s ease;
   z-index: 1000;
 }
 
@@ -63,7 +63,7 @@
 
 /* Cuando el menú está activo (visible) */
 #menuLateral.active {
-  left: 0; /* El menú se muestra cuando la clase 'active' está presente */
+  left: 0; /* El menú se mueve hacia la izquierda */
 }
 
 /* Responsividad */
@@ -90,5 +90,10 @@
   /* Cuando el menú está abierto, el contenido de la página se mueve */
   .content {
     margin-left: 250px;
+  }
+
+  /* Ajustes para el contenido en móviles */
+  .d-flex {
+    flex-direction: column;
   }
 }
