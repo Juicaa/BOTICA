@@ -89,7 +89,6 @@ $stmt_productos->execute();
         <footer class="footer">
             <!-- Mensaje de agradecimiento -->
             <p><strong>Gracias por su compra</strong></p>
-            <p><strong>Visítanos en: </strong><a href="http://www.boticabienestarysalud.site" target="_blank">www.boticabienestarysalud.site</a></p>
             <button onclick="window.print()">Imprimir Boleta</button>
         </footer>
     </div>
