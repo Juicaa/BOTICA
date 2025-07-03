@@ -34,13 +34,13 @@ jobs:
       - name: Run PHPStan (static analysis)
         run: |
           if [ -f vendor/bin/phpstan ]; then
-            vendor/bin/phpstan analyse --no-progress --memory-limit=1G backend/ || true
+            vendor/bin/phpstan analyse --no-progress --memory-limit=1G backend/
           fi
 
       - name: Run PHP_CodeSniffer (code style)
         run: |
           if [ -f vendor/bin/phpcs ]; then
-            vendor/bin/phpcs --standard=PSR12 backend/ || true
+            vendor/bin/phpcs --standard=PSR12 backend/
           fi
 
       - name: Run PHPUnit tests
@@ -52,7 +52,7 @@ jobs:
       - name: PHPUnit Coverage
         run: |
           if [ -f vendor/bin/phpunit ]; then
-            vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml || true
+            vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
           fi
 
   js-css-html-lint:
@@ -82,35 +82,35 @@ jobs:
       - name: Run npm audit (security)
         run: |
           if [ -f package.json ]; then
-            npm audit --audit-level=moderate || true
+            npm audit --audit-level=moderate
           fi
 
       - name: Run JS lint (eslint)
         run: |
           if [ -f node_modules/.bin/eslint ]; then
-            npx eslint . || true
+            npx eslint .
           fi
 
       - name: Run CSS lint (stylelint)
         run: |
           if [ -f node_modules/.bin/stylelint ]; then
-            npx stylelint "**/*.css" || true
+            npx stylelint "**/*.css"
           fi
 
       - name: Run HTML lint (htmlhint)
         run: |
           if [ -f node_modules/.bin/htmlhint ]; then
-            npx htmlhint "**/*.html" || true
+            npx htmlhint "**/*.html"
           fi
 
       - name: Run Prettier (format check)
         run: |
           if [ -f node_modules/.bin/prettier ]; then
-            npx prettier --check . || true
+            npx prettier --check .
           fi
 
       - name: Run JS tests (Jest)
         run: |
           if [ -f node_modules/.bin/jest ]; then
-            npx jest || true
+            npx jest
           fi
