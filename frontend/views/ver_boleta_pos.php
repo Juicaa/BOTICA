@@ -46,7 +46,7 @@ $stmt_productos->execute();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boleta de Compra</title>
-    <link rel="stylesheet" href="../assets/css/boleta.css"> <!-- Enlaza el CSS para el estilo -->
+    <link rel="stylesheet" href="../assets/css/boleta_pos.css"> <!-- Enlaza el CSS para el estilo -->
 </head>
 <body>
     <div class="ticket">
