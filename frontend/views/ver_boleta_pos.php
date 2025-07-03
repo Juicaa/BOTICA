@@ -11,9 +11,10 @@ if (isset($_GET['id_venta'])) {
 }
 
 // Obtener los detalles de la venta
-$sql_venta = "SELECT v.id_venta, v.fecha, v.total, c.nombre_completo
+$sql_venta = "SELECT v.id_venta, v.fecha, v.total, c.nombre_completo, c.dni, u.usuario as vendedor
               FROM ventas v
               JOIN clientes c ON v.id_cliente = c.id_cliente
+              JOIN usuarios u ON v.id_usuario = u.id_usuario
               WHERE v.id_venta = :id_venta";  // Usamos un parámetro para PDO
 
 $stmt_venta = $conn->prepare($sql_venta);
@@ -50,9 +51,13 @@ $stmt_productos->execute();
 <body>
     <div class="ticket">
         <header class="header">
-            <h1>Boleta de Compra</h1>
+            <!-- Logo de la empresa -->
+            <img src="../assets/img/logo_botica.png" alt="Logo Botica Bienestar y Salud" class="logo">
+            <h1>Botica Bienestar y Salud</h1>
             <p>Fecha: <?php echo date("Y-m-d H:i:s", strtotime($venta['fecha'])); ?></p>
             <p>Cliente: <?php echo $venta['nombre_completo']; ?></p>
+            <p>DNI: <?php echo $venta['dni']; ?></p>
+            <p>Vendedor: <?php echo $venta['vendedor']; ?></p>
         </header>
 
         <section class="details">
