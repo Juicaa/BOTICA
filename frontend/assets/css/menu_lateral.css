@@ -1,18 +1,12 @@
-/* Estilo del icono de tres rayas (hamburger) */
+/* Estilo para el icono de tres rayas (hamburger) */
 .menu-toggle {
     font-size: 30px;
     color: #333;
     cursor: pointer;
-    display: none; /* Ocultar por defecto */
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 1001;
-}
-
-/* Contenedor del menú lateral */
-#menuLateralContainer {
-    position: relative; /* Asegura que el menú se posicione de forma correcta */
 }
 
 /* Estilos para el menú lateral */
@@ -23,14 +17,8 @@
     top: 0;
     left: -250px; /* El menú comienza fuera de la pantalla */
     height: 100%;
-    transition: left 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+    transition: left 0.3s ease;
     z-index: 1000;
-}
-
-/* Estilos del menú cuando está activo */
-#menuLateral.active {
-    left: 0; /* El menú se mueve hacia la izquierda cuando está activo */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra cuando está visible */
 }
 
 #menuLateral ul {
@@ -42,38 +30,31 @@
     padding: 10px;
 }
 
+/* Menú lateral activo (visible) */
+#menuLateral.active {
+    left: 0; /* El menú se mueve a la izquierda cuando está activo */
+}
+
 /* Responsividad */
 @media (max-width: 768px) {
     /* Mostrar el icono de las tres rayas en móviles */
     .menu-toggle {
-        display: block; /* Se muestra en móviles */
+        display: block;
     }
 
-    /* Menú lateral más grande en pantallas pequeñas */
+    /* Menú lateral en pantallas pequeñas */
     #menuLateral {
         left: -250px; /* El menú comienza oculto en dispositivos pequeños */
-        width: 250px; /* Ajusta el tamaño del menú según prefieras */
+        width: 250px;
     }
 
-    /* Mostrar el menú cuando está activo en pantallas pequeñas */
     #menuLateral.active {
         left: 0; /* El menú se mueve a la izquierda cuando está activo */
     }
 
-    /* Ajustes para el contenido cuando el menú se activa */
+    /* Desplazamiento del contenido cuando el menú se activa */
     .content.active {
-        transform: translateX(250px); /* Desplaza el contenido hacia la derecha */
-        transition: transform 0.3s ease; /* Suaviza la transición */
-    }
-
-    /* Ajustes de estilo para los elementos del menú */
-    .nav-item {
-        font-size: 14px; /* Ajusta el tamaño del texto en pantallas pequeñas */
-    }
-}
-
-@media (min-width: 769px) {
-    .menu-toggle {
-        display: block; /* Muestra el ícono en pantallas grandes */
+        margin-left: 250px; /* El contenido se desplaza hacia la derecha */
+        transition: margin-left 0.3s ease;
     }
 }
