@@ -10,7 +10,7 @@
     z-index: 1001;
 }
 
-/* Contenedor del menú lateral (añadido) */
+/* Contenedor del menú lateral */
 #menuLateralContainer {
     position: relative; /* Asegura que el menú se posicione de forma correcta */
 }
@@ -23,8 +23,14 @@
     top: 0;
     left: -250px; /* El menú comienza fuera de la pantalla */
     height: 100%;
-    transition: left 0.3s ease;
+    transition: left 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
     z-index: 1000;
+}
+
+/* Estilos del menú cuando está activo */
+#menuLateral.active {
+    left: 0; /* El menú se mueve hacia la izquierda cuando está activo */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra cuando está visible */
 }
 
 #menuLateral ul {
@@ -36,11 +42,6 @@
     padding: 10px;
 }
 
-/* Cuando el menú está activo (visible) */
-#menuLateral.active {
-    left: 0; /* El menú se mueve hacia la izquierda */
-}
-
 /* Responsividad */
 @media (max-width: 768px) {
     /* Mostrar el icono de las tres rayas en móviles */
@@ -48,10 +49,10 @@
         display: block; /* Se muestra en móviles */
     }
 
-    /* Menú lateral - Ajuste en pantallas pequeñas */
+    /* Menú lateral más grande en pantallas pequeñas */
     #menuLateral {
-        left: -200px; /* El menú comienza oculto en dispositivos pequeños */
-        width: 200px; /* Puedes ajustar el tamaño según prefieras */
+        left: -250px; /* El menú comienza oculto en dispositivos pequeños */
+        width: 250px; /* Ajusta el tamaño del menú según prefieras */
     }
 
     /* Mostrar el menú cuando está activo en pantallas pequeñas */
@@ -59,23 +60,20 @@
         left: 0; /* El menú se mueve a la izquierda cuando está activo */
     }
 
-    /* Ajustes para el contenido en dispositivos móviles */
-    .d-flex {
-        flex-direction: column;
-    }
-
-    .content {
-        margin-left: 0; /* Asegura que el contenido no se desplace cuando el menú está activo */
-    }
-
-    /* Ajuste para el contenido cuando el menú se activa */
+    /* Ajustes para el contenido cuando el menú se activa */
     .content.active {
-        margin-left: 200px; /* El contenido se desplaza hacia la derecha */
-        transition: margin-left 0.3s ease; /* Suaviza la transición */
+        transform: translateX(250px); /* Desplaza el contenido hacia la derecha */
+        transition: transform 0.3s ease; /* Suaviza la transición */
     }
 
     /* Ajustes de estilo para los elementos del menú */
     .nav-item {
-        font-size: 14px; /* Puedes ajustar el tamaño del texto en pantallas pequeñas */
+        font-size: 14px; /* Ajusta el tamaño del texto en pantallas pequeñas */
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: block; /* Muestra el ícono en pantallas grandes */
     }
 }
