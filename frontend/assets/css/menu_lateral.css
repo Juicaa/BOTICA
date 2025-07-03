@@ -10,9 +10,9 @@
     z-index: 1001;
 }
 
-/* Menú lateral dentro del contenedor */
+/* Contenedor del menú lateral (añadido) */
 #menuLateralContainer {
-  position: relative; /* Asegura que el menú se posicione de forma correcta */
+    position: relative; /* Asegura que el menú se posicione de forma correcta */
 }
 
 /* Estilos para el menú lateral */
@@ -50,9 +50,11 @@
 
     /* Menú lateral - Ajuste en pantallas pequeñas */
     #menuLateral {
-        left: -250px; /* El menú comienza oculto en dispositivos pequeños */
+        left: -200px; /* El menú comienza oculto en dispositivos pequeños */
+        width: 200px; /* Puedes ajustar el tamaño según prefieras */
     }
 
+    /* Mostrar el menú cuando está activo en pantallas pequeñas */
     #menuLateral.active {
         left: 0; /* El menú se mueve a la izquierda cuando está activo */
     }
@@ -64,5 +66,16 @@
 
     .content {
         margin-left: 0; /* Asegura que el contenido no se desplace cuando el menú está activo */
+    }
+
+    /* Ajuste para el contenido cuando el menú se activa */
+    .content.active {
+        margin-left: 200px; /* El contenido se desplaza hacia la derecha */
+        transition: margin-left 0.3s ease; /* Suaviza la transición */
+    }
+
+    /* Ajustes de estilo para los elementos del menú */
+    .nav-item {
+        font-size: 14px; /* Puedes ajustar el tamaño del texto en pantallas pequeñas */
     }
 }
