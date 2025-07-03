@@ -1,51 +1,13 @@
-/* Estilo para el icono de tres rayas (hamburger) */
+/* Mostrar el icono de las tres rayas en móviles */
 .menu-toggle {
-    font-size: 30px;
-    color: #333;
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
+    display: block; /* Se muestra en pantallas pequeñas */
 }
 
-/* Estilos para el menú lateral */
-#menuLateral {
-    width: 250px;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    left: -250px; /* El menú comienza fuera de la pantalla */
-    height: 100%;
-    transition: left 0.3s ease;
-    z-index: 1000;
-}
-
-#menuLateral ul {
-    padding: 0;
-    list-style: none;
-}
-
-#menuLateral ul li {
-    padding: 10px;
-}
-
-/* Menú lateral activo (visible) */
-#menuLateral.active {
-    left: 0; /* El menú se mueve a la izquierda cuando está activo */
-}
-
-/* Responsividad */
+/* Ajustar el tamaño del menú lateral en pantallas pequeñas */
 @media (max-width: 768px) {
-    /* Mostrar el icono de las tres rayas en móviles */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* Menú lateral en pantallas pequeñas */
     #menuLateral {
         left: -250px; /* El menú comienza oculto en dispositivos pequeños */
-        width: 250px;
+        width: 250px; /* Ajusta el tamaño del menú según lo prefieras */
     }
 
     #menuLateral.active {
@@ -57,4 +19,11 @@
         margin-left: 250px; /* El contenido se desplaza hacia la derecha */
         transition: margin-left 0.3s ease;
     }
+}
+#menuLateral {
+    z-index: 1000;  /* Asegúrate de que el menú esté por encima del contenido */
+}
+
+.content.active {
+    z-index: 500; /* Asegura que el contenido se mueva detrás del menú cuando está activo */
 }
