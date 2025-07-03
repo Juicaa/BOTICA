@@ -1,0 +1,123 @@
+/* Establece el fondo completo de la página */
+body {
+    font-family: 'Courier New', monospace; /* Fuente monoespaciada */
+    font-size: 14px;                       /* Tamaño de fuente adecuado para POS */
+    color: #000;                           /* Color negro para el texto */
+    margin: 0;
+    padding: 0;
+    height: 100vh;                         /* La altura completa del viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../assets/img/fondo_login.jpg') no-repeat center center fixed; /* Fondo de la imagen */
+    background-size: cover; /* Hace que la imagen de fondo cubra toda la pantalla */
+}
+
+/* Contenedor de la tarjeta de boleta */
+.ticket {
+    width: 320px;                         /* Ancho adecuado para la boleta */
+    padding: 20px;
+    background-color: white;              /* Fondo blanco para la boleta */
+    text-align: center;                   /* Centrado del contenido */
+    border: 1px solid #000;               /* Borde negro alrededor de la boleta */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera para resaltar la boleta */
+    position: relative;
+    z-index: 1;                           /* Asegura que la tarjeta esté por encima del fondo */
+}
+
+/* Estilo para el logo de la empresa */
+.logo {
+    width: 80px;            /* Ajusta el tamaño del logo */
+    height: auto;           /* Mantener la relación de aspecto */
+    margin-bottom: 10px;    /* Espacio debajo del logo */
+}
+
+/* Estilo para el encabezado de la boleta */
+.header h1 {
+    font-size: 20px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;      /* Negrita para el título */
+}
+
+/* Estilo para los párrafos del encabezado */
+.header p {
+    margin: 5px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Estilo para la tabla de los productos de la venta */
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.details th, .details td {
+    padding: 5px;
+    border-bottom: 1px solid #000;    /* Línea debajo de las celdas */
+    text-align: left;
+}
+
+.details th {
+    font-weight: bold;               /* Negrita para los encabezados de la tabla */
+}
+
+/* Estilo para el footer */
+.footer p {
+    margin: 10px 0;                    /* Espaciado para el mensaje y total */
+    font-size: 16px;
+    font-weight: bold;                 /* Resaltar el total */
+}
+
+/* Estilo para el enlace de la URL */
+.footer a {
+    color: #007bff;                   /* Color azul para el enlace */
+    text-decoration: none;            /* Quitar el subrayado */
+    font-weight: bold;                /* Negrita para el enlace */
+}
+
+.footer a:hover {
+    text-decoration: underline;       /* Subrayado cuando el enlace es hover */
+}
+
+/* Estilo para el botón de impresión */
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Media query para tamaños pequeños */
+@media print {
+    /* Cuando se imprime, eliminamos cualquier fondo */
+    body {
+        background: none;
+    }
+
+    /* Quitamos la sombra de la tarjeta cuando se imprime */
+    .ticket {
+        box-shadow: none;
+    }
+
+    /* Hacemos que la tarjeta ocupe toda la página para la impresión */
+    .ticket {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Escondemos el botón de impresión al imprimir */
+    button {
+        display: none;
+    }
+}
