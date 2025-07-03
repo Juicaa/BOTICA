@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión
-include '../../backend/config/conexion.php'; // Ruta correcta según tu estructura
+include '../../backend/config/conexion.php'; // Ajusta la ruta según tu estructura
 
 // Verifica si se pasa un id_venta por la URL
 if (isset($_GET['id_venta'])) {
@@ -14,12 +14,15 @@ if (isset($_GET['id_venta'])) {
 $sql_venta = "SELECT v.id_venta, v.fecha, v.total, c.nombre_completo
               FROM ventas v
               JOIN clientes c ON v.id_cliente = c.id_cliente
-              WHERE v.id_venta = $id_venta";
-$result_venta = $conn->query($sql_venta);
+              WHERE v.id_venta = :id_venta";  // Usamos un parámetro para PDO
+
+$stmt_venta = $conn->prepare($sql_venta);
+$stmt_venta->bindParam(':id_venta', $id_venta, PDO::PARAM_INT);
+$stmt_venta->execute();
 
 // Verificar si la venta existe
-if ($result_venta->num_rows > 0) {
-    $venta = $result_venta->fetch_assoc();
+if ($stmt_venta->rowCount() > 0) {
+    $venta = $stmt_venta->fetch(PDO::FETCH_ASSOC);
 } else {
     die('Venta no encontrada');
 }
@@ -29,8 +32,11 @@ $sql_productos = "SELECT m.nombre, l.cantidad, l.precio_unitario
                   FROM salidalotes s
                   JOIN lotes l ON s.id_lote = l.id_lote
                   JOIN medicamentos m ON l.id_medicamento = m.id_medicamento
-                  WHERE s.id_venta = $id_venta";
-$result_productos = $conn->query($sql_productos);
+                  WHERE s.id_venta = :id_venta";
+
+$stmt_productos = $conn->prepare($sql_productos);
+$stmt_productos->bindParam(':id_venta', $id_venta, PDO::PARAM_INT);
+$stmt_productos->execute();
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +67,7 @@ $result_productos = $conn->query($sql_productos);
                 <?php
                 // Mostrar los productos de la venta
                 $total_venta = 0;
-                while ($producto = $result_productos->fetch_assoc()) {
+                while ($producto = $stmt_productos->fetch(PDO::FETCH_ASSOC)) {
                     $total_producto = $producto['cantidad'] * $producto['precio_unitario'];
                     $total_venta += $total_producto;
                     echo "<tr>
@@ -83,7 +89,6 @@ $result_productos = $conn->query($sql_productos);
         </footer>
     </div>
 
-    <?php $conn->close(); // Cierra la conexión ?>
+    <?php $conn = null; // Cierra la conexión ?>
 </body>
 </html>
-
