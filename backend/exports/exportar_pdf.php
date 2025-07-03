@@ -30,11 +30,11 @@ if (!empty($medicamento)) {
 // Consulta con filtros
 $sql = "SELECT v.id_venta, v.fecha, u.usuario, m.nombre AS medicamento, s.cantidad, 
                l.precio_unitario, (s.cantidad * l.precio_unitario) AS total
-        FROM Ventas v
-        JOIN Usuarios u ON v.id_usuario = u.id_usuario
-        JOIN SalidaLotes s ON v.id_venta = s.id_venta
-        JOIN Lotes l ON s.id_lote = l.id_lote
-        JOIN Medicamentos m ON l.id_medicamento = m.id_medicamento
+        FROM ventas v
+        JOIN usuarios u ON v.id_usuario = u.id_usuario
+        JOIN salidalotes s ON v.id_venta = s.id_venta
+        JOIN lotes l ON s.id_lote = l.id_lote
+        JOIN medicamentos m ON l.id_medicamento = m.id_medicamento
         $filtro
         ORDER BY v.fecha DESC";
 
