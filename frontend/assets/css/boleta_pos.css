@@ -1,7 +1,7 @@
 /* General para la boleta */
 body {
   font-family: 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 14px;  /* Aumentamos el tamaño del texto para que sea más legible */
   color: #000;
   margin: 0;
   height: 100vh; /* Asegura que la boleta ocupe toda la altura de la pantalla */
@@ -33,10 +33,10 @@ body::before {
 /* Boleta Box */
 .boleta-box {
   border: 1px solid #ccc;
-  padding: 20px;
+  padding: 30px; /* Aumentamos el padding para dar más espacio */
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con opacidad */
-  width: 230px; /* Asegura que la boleta tenga un tamaño adecuado */
+  width: 300px; /* Aumentamos el tamaño de la boleta */
   margin: 30px auto; /* Centrado horizontal */
   position: relative;
   z-index: 1;
@@ -59,7 +59,7 @@ body::before {
 }
 
 .total {
-  font-size: 14px;
+  font-size: 16px; /* Aumentamos el tamaño del total */
   font-weight: bold;
   padding-top: 10px;
 }
@@ -77,12 +77,12 @@ body::before {
 }
 
 .boleta-header img {
-  width: 100px;
-  height: 100px;
+  width: 120px;  /* Aumentamos el tamaño del logo */
+  height: 120px;
 }
 
 .boleta-footer {
-  text-align: right;
+  text-align: center;
   margin-top: 20px;
   font-weight: bold;
 }
@@ -90,7 +90,7 @@ body::before {
 /* Estilo de impresión */
 @media print {
   body {
-    font-size: 12px;
+    font-size: 14px; /* Aumentamos el tamaño de la fuente para impresión */
     width: auto;
     margin: 0;
     background: none; /* Elimina el fondo al imprimir */
@@ -110,7 +110,7 @@ body::before {
 
   table {
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -120,7 +120,7 @@ body::before {
   width: 100%;
   background-color: #54cc96;
   border: none;
-  padding: 10px;
+  padding: 12px; /* Aumentamos el tamaño del botón */
   color: white;
   cursor: pointer;
 }
