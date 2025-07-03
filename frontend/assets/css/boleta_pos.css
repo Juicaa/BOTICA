@@ -29,7 +29,7 @@ body {
 
 /* Estilo para el logo de la empresa */
 .logo {
-    width: 60px;            /* Ajusta el tamaño del logo */
+    width: 80px;            /* Ajusta el tamaño del logo */
     height: auto;           /* Mantener la relación de aspecto */
     margin-bottom: 10px;    /* Espacio debajo del logo */
 }
@@ -71,17 +71,6 @@ body {
     margin: 10px 0;                    /* Espaciado para el mensaje y total */
     font-size: 16px;
     font-weight: bold;                 /* Resaltar el total */
-}
-
-/* Estilo para el enlace de la URL */
-.footer a {
-    color: #007bff;                   /* Color azul para el enlace */
-    text-decoration: none;            /* Quitar el subrayado */
-    font-weight: bold;                /* Negrita para el enlace */
-}
-
-.footer a:hover {
-    text-decoration: underline;       /* Subrayado cuando el enlace es hover */
 }
 
 /* Estilo para el botón de impresión */
