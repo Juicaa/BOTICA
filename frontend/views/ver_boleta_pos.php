@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión
-include '../backend/config/conexion.php'; // Ruta correcta según tu estructura
+include '../../backend/config/conexion.php'; // Ruta correcta según tu estructura
 
 // Verifica si se pasa un id_venta por la URL
 if (isset($_GET['id_venta'])) {
