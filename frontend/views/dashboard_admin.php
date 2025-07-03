@@ -40,7 +40,7 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
     <?php include 'menu_lateral.php'; ?>
 
     <!-- Contenido principal -->
-    <div class="flex-fill p-4 content">
+    <div id="contenidoPrincipal" class="flex-fill p-4 content">
       <h3 class="mb-4">Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></h3>
 
       <!-- Tarjetas resumen -->
@@ -73,9 +73,11 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
 
     </div>
   </div>
-  <!-- Asegúrate de colocar este enlace justo antes del cierre de la etiqueta </body> -->
+
+  <!-- Asegúrate de colocar estos enlaces justo antes del cierre de la etiqueta </body> -->
   <script src="../js/menu_lateral.js"></script>
   <script src="../js/dashboard_administrador.js"></script>
 
 </body>
 </html>
+
