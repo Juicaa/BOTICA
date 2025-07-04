@@ -1,13 +1,12 @@
-/* Resetear márgenes y padding para asegurar que el contenido ocupe toda la pantalla */
+/* Asegura que el body ocupe toda la altura de la pantalla */
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%; /* Asegura que el body ocupe toda la altura de la pantalla */
   display: flex;
-  flex-direction: column;  /* Organiza el contenido en columnas */
-  justify-content: space-between; /* Distribuye el contenido y el footer */
-  align-items: center; /* Centra el contenido horizontalmente */
-  background-color: #f2fdf5; /* Fondo suave para la página */
+  flex-direction: column;  /* Organiza el contenido en columna */
+  justify-content: space-between; /* Hace que el contenido y el pie de página se distribuyan correctamente */
+  background-color: #f2fdf5;
 }
 
 /* Fondo de la página */
@@ -20,16 +19,16 @@ body::before {
   width: 100%;
   height: 100%;
   opacity: 0.4;
-  z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+  z-index: -1;
 }
 
 /* Centrado del contenido */
 .container {
   display: flex;
-  flex-direction: column;  /* Organiza el contenido en columna */
-  justify-content: center; /* Centra verticalmente */
-  align-items: center; /* Centra horizontalmente */
-  min-height: 100vh; /* Asegura que la altura mínima sea de la pantalla completa */
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido verticalmente */
+  align-items: center; /* Centra el contenido horizontalmente */
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura */
   padding: 1rem;
   position: relative;
 }
@@ -41,9 +40,9 @@ body::before {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   padding: 2.5rem 2rem;
   width: 100%;
-  max-width: 420px; /* Limitar el ancho máximo */
+  max-width: 420px;
   text-align: center;
-  margin-bottom: 1rem; /* Ajuste de margen */
+  margin-bottom: 1rem;
 }
 
 /* Logo */
@@ -108,17 +107,4 @@ footer.footer {
 /* Asegura que el pie de página siempre esté al fondo */
 footer {
   margin-top: auto;  /* Hace que el pie se quede al fondo */
-}
-
-/* Ajustes de estilo para los enlaces en el pie */
-.card-footer a {
-  color: #508aeb;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.card-footer a:hover {
-  text-decoration: underline;
 }
