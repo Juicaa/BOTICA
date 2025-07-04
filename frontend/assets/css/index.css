@@ -2,10 +2,11 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;  /* Asegura que el body ocupe toda la altura de la pantalla */
+  height: 100%; /* Asegura que el body ocupe toda la altura de la pantalla */
   display: flex;
-  flex-direction: column; /* Organiza el contenido en columnas */
-  justify-content: space-between;  /* Hace que el contenido principal y el pie se distribuyan correctamente */
+  flex-direction: column;  /* Organizar el contenido en columnas */
+  justify-content: center; /* Centrar el contenido verticalmente */
+  align-items: center; /* Centrar el contenido horizontalmente */
   background-color: #f2fdf5; /* Fondo suave para la página */
 }
 
@@ -18,17 +19,17 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.4;
-  z-index: -1;
+  opacity: 0.4;  /* Efecto de opacidad del fondo */
+  z-index: -1; /* Asegura que el fondo esté detrás del contenido */
 }
 
 /* Centrado del contenido */
 .container {
   display: flex;
-  flex-direction: column;  /* Asegura que el contenido se organice en columna */
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;  /* Asegura que la altura mínima sea de la pantalla completa */
+  flex-direction: column;
+  justify-content: center; /* Centrado vertical del contenido */
+  align-items: center; /* Centrado horizontal del contenido */
+  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
   padding: 1rem;
   position: relative;
 }
@@ -42,7 +43,7 @@ body::before {
   width: 100%;
   max-width: 420px; /* Limitar el ancho máximo */
   text-align: center;
-  margin-bottom: 1rem; /* Ajuste de margen */
+  margin-bottom: 1rem; /* Asegura un pequeño margen debajo del formulario */
 }
 
 /* Logo */
@@ -59,7 +60,7 @@ body::before {
   font-weight: 600;
 }
 
-/* Inputs */
+/* Estilo para los inputs */
 .login-form input.form-control {
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
@@ -74,7 +75,7 @@ body::before {
   box-shadow: none;
 }
 
-/* Botón */
+/* Estilo del botón */
 .btn-primary {
   background-color: #54cc96;
   border-color: #54cc96;
@@ -97,14 +98,14 @@ footer.footer {
   padding: 10px;
   font-size: 12px;
   color: #666;
-  position: absolute;  /* Fija el pie al fondo de la página */
+  position: absolute;
   bottom: 0;
   left: 0;
+  margin-top: auto; /* Coloca el pie de página al final */
 }
 
-/* Asegura que el pie de página siempre esté al fondo */
 footer {
-  margin-top: auto;  /* Coloca el pie de página al fondo */
+  margin-top: auto;  /* Hace que el pie se quede al fondo */
 }
 
 /* Ajustes de estilo para los enlaces en el pie */
