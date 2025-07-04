@@ -30,7 +30,7 @@ body {
 
 /* Estilo para el logo de la empresa */
 .logo {
-    width: 80px;            /* Ajusta el tamaño del logo */
+    width: 150px;            /* Ajusta el tamaño del logo */
     height: auto;           /* Mantener la relación de aspecto */
     margin-bottom: 10px;    /* Espacio debajo del logo */
 }
