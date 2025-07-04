@@ -23,8 +23,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera para resaltar la boleta */
     position: relative;
     z-index: 1;                           /* Asegura que la tarjeta esté por encima del fondo */
-    max-height: 100%;                      /* Para evitar que se desborde la tarjeta */
-    overflow: auto;                        /* Asegura que el contenido no se desborde */
 }
 
 /* Estilo para el logo de la empresa */
