@@ -7,7 +7,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 require '../../backend/config/conexion.php';
 
-// Filtros desde GET
 $filtro = "WHERE 1=1";
 $params = [];
 
@@ -30,7 +29,6 @@ if (!empty($medicamento)) {
     $params[] = $medicamento;
 }
 
-// Consulta principal
 $sql = "
     SELECT v.id_venta, v.fecha, u.usuario, m.nombre AS medicamento, s.cantidad, l.precio_unitario, 
            (s.cantidad * l.precio_unitario) AS total
@@ -48,11 +46,9 @@ $stmt->execute($params);
 $reportes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $totalGeneral = array_sum(array_column($reportes, 'total'));
 
-// Filtros desplegables
 $usuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol = 'vendedor'")->fetchAll(PDO::FETCH_ASSOC);
 $medicamentos = $conn->query("SELECT DISTINCT nombre FROM medicamentos")->fetchAll(PDO::FETCH_ASSOC);
 
-// Para exportar
 $exportParams = http_build_query([
     'desde' => $desde,
     'hasta' => $hasta,
@@ -79,7 +75,6 @@ $exportParams = http_build_query([
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>
 
-  <!-- Filtros -->
   <form class="row g-3 mb-4" method="GET">
     <div class="col-md-3">
       <label>Desde</label>
@@ -117,7 +112,6 @@ $exportParams = http_build_query([
     </div>
   </form>
 
-  <!-- Tabla de reportes -->
   <div class="table-responsive">
     <table id="tabla-ventas" class="table table-bordered table-hover">
       <thead class="table-success">
@@ -153,14 +147,12 @@ $exportParams = http_build_query([
     </table>
   </div>
 
-  <!-- Botones de exportación -->
   <div class="mt-3 d-flex gap-3">
     <a href="../../backend/exports/exportar_excel.php?<?= $exportParams ?>" class="btn btn-outline-success">Exportar a Excel</a>
     <a href="../../backend/exports/exportar_pdf.php?<?= $exportParams ?>" class="btn btn-outline-danger">Exportar a PDF</a>
   </div>
 </div>
 
-<!-- Scripts de DataTables -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>

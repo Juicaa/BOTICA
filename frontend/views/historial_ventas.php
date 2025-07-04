@@ -13,7 +13,6 @@ if (!$id_usuario) {
     die("Usuario no identificado.");
 }
 
-// Obtener ventas del día hechas por este vendedor, incluyendo datos del cliente
 $stmt = $conn->prepare("
     SELECT v.id_venta, v.fecha, v.total, c.nombre_completo, c.dni
     FROM ventas v

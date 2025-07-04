@@ -7,7 +7,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 require '../../backend/config/conexion.php';
 
-// Crear nuevo usuario
 if (isset($_POST['crear'])) {
     $nuevoUsuario = $_POST['nuevo_usuario'];
     $nuevaContra = $_POST['nueva_contrasena'];
@@ -19,7 +18,6 @@ if (isset($_POST['crear'])) {
     exit();
 }
 
-// Eliminar usuario
 if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
 
@@ -38,7 +36,6 @@ if (isset($_GET['eliminar'])) {
     exit();
 }
 
-// Editar usuario
 if (isset($_POST['editar'])) {
     $idEditar = $_POST['id_editar'];
     $usuarioEditado = $_POST['usuario_editado'];
@@ -50,7 +47,6 @@ if (isset($_POST['editar'])) {
     exit();
 }
 
-// Obtener todos los usuarios vendedores
 $stmt = $conn->prepare("SELECT id_usuario, usuario, rol FROM usuarios WHERE rol = 'vendedor'");
 $stmt->execute();
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -74,7 +70,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>
 
-  <!-- Formulario de creación -->
   <div class="card my-4">
     <div class="card-header bg-success text-white">Registrar nuevo vendedor</div>
     <div class="card-body">
@@ -94,7 +89,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
-  <!-- Tabla de usuarios -->
   <div class="table-responsive">
     <table id="tabla-usuarios" class="table table-bordered table-hover">
       <thead class="table-success">
@@ -121,7 +115,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </table>
   </div>
 
-  <!-- Formulario oculto para editar -->
   <div class="card mt-4 d-none" id="formEditar">
     <div class="card-header bg-warning">Editar usuario</div>
     <div class="card-body">
@@ -146,7 +139,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </div>
 
-<!-- Scripts DataTables -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>

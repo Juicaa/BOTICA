@@ -1,6 +1,6 @@
 .form-control {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espacio entre el campo de búsqueda y el botón */
-  margin-bottom: 15px; /* Añadir un margen inferior para el espacio entre el formulario y los demás elementos */
+  gap: 10px; 
+  margin-bottom: 15px; 
 }

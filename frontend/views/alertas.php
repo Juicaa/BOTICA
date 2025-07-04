@@ -7,7 +7,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 require '../../backend/config/conexion.php';
 
-// lotes por vencer
 $hoy = date('Y-m-d');
 $limite = date('Y-m-d', strtotime('+15 days'));
 
@@ -20,7 +19,6 @@ $stmt1 = $conn->prepare("
 $stmt1->execute([$hoy, $limite]);
 $vencimientos = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-// lotes con stock bajo
 $stmt2 = $conn->prepare("
     SELECT l.id_lote, m.nombre AS medicamento, l.cantidad 
     FROM lotes l

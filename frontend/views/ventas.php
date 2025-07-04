@@ -7,7 +7,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 require '../../backend/config/conexion.php';
 
-// Filtros de fecha
 $desde = $_GET['desde'] ?? '';
 $hasta = $_GET['hasta'] ?? '';
 $condicion = '';
@@ -19,7 +18,6 @@ if (!empty($desde) && !empty($hasta)) {
     $params[':hasta'] = $hasta;
 }
 
-// Consulta principal
 $query = "
     SELECT v.id_venta, v.fecha, v.total, u.usuario, c.nombre_completo AS cliente
     FROM ventas v
@@ -55,7 +53,6 @@ $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>
 
-  <!-- Filtros -->
   <form class="row g-3 mb-4" method="GET">
     <div class="col-md-4">
       <label for="desde" class="form-label">Desde</label>
@@ -71,7 +68,6 @@ $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </form>
 
-  <!-- Tabla -->
   <table class="table table-bordered table-hover">
     <thead class="table-success">
       <tr>
@@ -101,7 +97,6 @@ $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </table>
 </div>
 
-<!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>

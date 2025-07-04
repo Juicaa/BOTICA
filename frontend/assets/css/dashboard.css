@@ -6,7 +6,6 @@ body {
   background-color: #f2fdf5;
 }
 
-/* Fondo de la página */
 body::before {
   content: "";
   background: url('../img/fondo_login.jpg') no-repeat center center / cover;
@@ -19,27 +18,23 @@ body::before {
   z-index: -1;
 }
 
-/* Contenedor principal */
 .container {
   max-width: 1200px;
   margin: auto;
 }
 
-/* Título principal */
 h2 {
   color: #2e7d32;
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-/* Subtítulo o secciones */
 h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: #333;
 }
 
-/* Tarjetas resumen */
 .card-boxes {
   display: flex;
   gap: 1rem;
@@ -59,7 +54,6 @@ h3 {
   color: #333;
 }
 
-/* Botones de acción */
 .actions {
   margin-top: 2rem;
   display: flex;
@@ -82,7 +76,6 @@ h3 {
   background-color: #40b97e;
 }
 
-/* Tabla de alertas */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -107,7 +100,6 @@ table tr:hover {
   background-color: #f9f9f9;
 }
 
-/* Enlaces */
 a {
   color: #508aeb;
   text-decoration: none;
@@ -117,7 +109,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .card-boxes {
     flex-direction: column;

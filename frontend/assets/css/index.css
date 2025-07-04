@@ -1,15 +1,13 @@
-/* Asegura que el body ocupe toda la altura de la pantalla */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;  /* Organiza el contenido en columna */
-  justify-content: space-between; /* Hace que el contenido y el pie de página se distribuyan correctamente */
+  flex-direction: column;  
+  justify-content: space-between; 
   background-color: #f2fdf5;
 }
 
-/* Fondo de la página */
 body::before {
   content: "";
   background: url('../img/fondo_login.jpg') no-repeat center center / cover;
@@ -22,18 +20,16 @@ body::before {
   z-index: -1;
 }
 
-/* Centrado del contenido */
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra el contenido verticalmente */
-  align-items: center; /* Centra el contenido horizontalmente */
-  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura */
+  justify-content: center; 
+  align-items: center;
+  min-height: 100vh; 
   padding: 1rem;
   position: relative;
 }
 
-/* Tarjeta del login */
 .login-card {
   background-color: #ffffff;
   border-radius: 12px;
@@ -45,13 +41,11 @@ body::before {
   margin-bottom: 1rem;
 }
 
-/* Logo */
 .login-logo {
   max-width: 90px;
   margin-bottom: 0.75rem;
 }
 
-/* Título */
 .login-card h4 {
   font-size: 1.5rem;
   color: #333;
@@ -59,7 +53,6 @@ body::before {
   font-weight: 600;
 }
 
-/* Estilo para los inputs */
 .login-form input.form-control {
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
@@ -74,7 +67,6 @@ body::before {
   box-shadow: none;
 }
 
-/* Estilo del botón */
 .btn-primary {
   background-color: #54cc96;
   border-color: #54cc96;

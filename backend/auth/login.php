@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/conexion.php'; // Usa PDO y la variable $conn
+require '../config/conexion.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = trim($_POST['usuario']);
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Consulta segura con PDO
+    
     $stmt = $conn->prepare("SELECT id_usuario, usuario, contraseña, rol FROM usuarios WHERE usuario = ?");
     $stmt->execute([$usuario]);
     $fila = $stmt->fetch(PDO::FETCH_ASSOC);

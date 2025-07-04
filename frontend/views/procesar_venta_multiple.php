@@ -14,17 +14,14 @@ $cantidades = $_POST['cantidades'] ?? [];
 
 file_put_contents('log_errores.txt', json_encode($_POST));
 
-// Validación de DNI y nombre
 if (strlen($dni_cliente) !== 8 || !ctype_digit($dni_cliente) || empty($nombre_cliente)) {
     die("Error: DNI o nombre del cliente inválido.");
 }
 
-// Validación de productos
 if (count($lotes) !== count($cantidades) || count($lotes) === 0) {
     die("Error: datos incompletos o vacíos.");
 }
 
-// Paso 1: Buscar o registrar cliente
 $stmt = $conn->prepare("SELECT id_cliente FROM clientes WHERE dni = ?");
 $stmt->execute([$dni_cliente]);
 $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -37,7 +34,6 @@ if ($cliente) {
     $id_cliente = $conn->lastInsertId();
 }
 
-// Paso 2: Verificar stock y calcular total
 $total = 0;
 $detalles = [];
 
@@ -65,12 +61,10 @@ foreach ($lotes as $i => $id_lote) {
     ];
 }
 
-// Paso 3: Insertar venta
 $stmt = $conn->prepare("INSERT INTO ventas (total, id_usuario, id_cliente) VALUES (?, ?, ?)");
 $stmt->execute([$total, $id_usuario, $id_cliente]);
 $id_venta = $conn->lastInsertId();
 
-// Paso 4: Insertar detalle de salida y actualizar stock
 foreach ($detalles as $detalle) {
     $stmt = $conn->prepare("INSERT INTO salidalotes (id_lote, id_venta, cantidad) VALUES (?, ?, ?)");
     $stmt->execute([$detalle['id_lote'], $id_venta, $detalle['cantidad']]);
@@ -79,6 +73,5 @@ foreach ($detalles as $detalle) {
     $stmt->execute([$detalle['cantidad'], $detalle['id_lote']]);
 }
 
-// Redirigir al finalizar
 header("Location: ver_boleta.php?id_venta=$id_venta");
 exit();

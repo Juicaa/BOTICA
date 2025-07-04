@@ -8,7 +8,6 @@ if (!isset($_GET['id_venta'])) {
 
 $id_venta = (int)$_GET['id_venta'];
 
-// Obtener datos generales de la venta
 $stmt = $conn->prepare("
     SELECT v.id_venta, v.fecha, v.total, 
            c.nombre_completo AS cliente, c.dni, 
@@ -25,7 +24,6 @@ if (!$venta) {
     die("Venta no encontrada.");
 }
 
-// Obtener detalles de los medicamentos vendidos
 $stmt = $conn->prepare("
     SELECT m.nombre AS medicamento, l.id_lote, s.cantidad, l.precio_unitario
     FROM salidalotes s

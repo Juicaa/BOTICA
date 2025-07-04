@@ -13,7 +13,6 @@ $stmt = $conn->prepare("
 $stmt->execute(["%$term%"]);
 $lotes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Formato Select2
 $resultados = array_map(function($lote) {
     return [
         'id' => $lote['id_lote'],

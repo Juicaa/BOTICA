@@ -29,7 +29,6 @@ if (isset($_POST['editar'])) {
     exit();
 }
 
-// Eliminar categoría
 if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
     $stmt = $conn->prepare("DELETE FROM categorias WHERE id_categoria = :id");
@@ -39,7 +38,6 @@ if (isset($_GET['eliminar'])) {
     exit();
 }
 
-// Obtener todas las categorías
 $stmt = $conn->prepare("SELECT * FROM categorias ORDER BY id_categoria DESC");
 $stmt->execute();
 $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -63,7 +61,6 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
   </a>
 
-  <!-- Formulario para crear -->
   <div class="card mb-4">
     <div class="card-header bg-success text-white">Registrar nueva categoría</div>
     <div class="card-body">
@@ -80,7 +77,6 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 
-  <!-- Tabla de categorías -->
   <div class="table-responsive">
     <table id="tabla-categorias" class="table table-bordered table-hover">
       <thead class="table-success">
@@ -105,7 +101,6 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </table>
   </div>
 
-  <!-- Formulario para editar -->
   <div class="card mt-4 d-none" id="formEditar">
     <div class="card-header bg-warning">Editar categoría</div>
     <div class="card-body">
@@ -125,7 +120,6 @@ $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </div>
 
-<!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>

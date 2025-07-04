@@ -3,13 +3,11 @@ require '../../vendor/autoload.php';
 require '../config/conexion.php';
 use TCPDF;
 
-// Obtener filtros desde la URL
 $desde = $_GET['desde'] ?? '';
 $hasta = $_GET['hasta'] ?? '';
 $usuario = $_GET['usuario'] ?? '';
 $medicamento = $_GET['medicamento'] ?? '';
 
-// Construir filtros
 $filtro = "WHERE 1=1";
 $params = [];
 
@@ -27,7 +25,6 @@ if (!empty($medicamento)) {
     $params[] = $medicamento;
 }
 
-// Consulta con filtros
 $sql = "SELECT v.id_venta, v.fecha, u.usuario, m.nombre AS medicamento, s.cantidad, 
                l.precio_unitario, (s.cantidad * l.precio_unitario) AS total
         FROM ventas v
@@ -42,7 +39,6 @@ $stmt = $conn->prepare($sql);
 $stmt->execute($params);
 $ventas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Crear PDF
 $pdf = new TCPDF();
 $pdf->AddPage();
 $pdf->Image('../../frontend/assets/img/logo_botica.png', 10, 10, 30);

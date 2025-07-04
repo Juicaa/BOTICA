@@ -4,7 +4,6 @@ require '../config/conexion.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-// Obtener filtros desde GET
 $desde = $_GET['desde'] ?? '';
 $hasta = $_GET['hasta'] ?? '';
 $usuario = $_GET['usuario'] ?? '';

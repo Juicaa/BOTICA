@@ -7,7 +7,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 require '../../backend/config/conexion.php';
 
-// Crear medicamento
 if (isset($_POST['crear'])) {
     $nombre = $_POST['nombre'];
     $categoria = $_POST['id_categoria'];
@@ -18,7 +17,6 @@ if (isset($_POST['crear'])) {
     exit();
 }
 
-// Editar medicamento
 if (isset($_POST['editar'])) {
     $id = $_POST['id_editar'];
     $nombre = $_POST['nombre_editado'];
@@ -30,7 +28,6 @@ if (isset($_POST['editar'])) {
     exit();
 }
 
-// Eliminar medicamento
 if (isset($_GET['eliminar'])) {
     $id = $_GET['eliminar'];
     $stmt = $conn->prepare("DELETE FROM medicamentos WHERE id_medicamento = ?");
@@ -39,7 +36,6 @@ if (isset($_GET['eliminar'])) {
     exit();
 }
 
-// Obtener medicamentos con sus categorías
 $stmt = $conn->prepare("SELECT m.id_medicamento, m.nombre, c.nombre AS categoria, c.id_categoria 
                         FROM medicamentos m 
                         JOIN categorias c ON m.id_categoria = c.id_categoria 
@@ -47,7 +43,6 @@ $stmt = $conn->prepare("SELECT m.id_medicamento, m.nombre, c.nombre AS categoria
 $stmt->execute();
 $medicamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Obtener todas las categorías
 $categorias = $conn->query("SELECT * FROM categorias")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -70,7 +65,6 @@ $categorias = $conn->query("SELECT * FROM categorias")->fetchAll(PDO::FETCH_ASSO
       <i class="bi bi-arrow-left-circle"></i> Volver al Dashboard
     </a>
 
-    <!-- Formulario crear -->
     <div class="card mb-4">
       <div class="card-header bg-success text-white">Registrar nuevo medicamento</div>
       <div class="card-body">
@@ -95,7 +89,6 @@ $categorias = $conn->query("SELECT * FROM categorias")->fetchAll(PDO::FETCH_ASSO
       </div>
     </div>
 
-    <!-- Tabla de medicamentos -->
     <div class="table-responsive">
       <table id="tabla-medicamentos" class="table table-bordered table-hover">
         <thead class="table-success">
@@ -125,7 +118,6 @@ $categorias = $conn->query("SELECT * FROM categorias")->fetchAll(PDO::FETCH_ASSO
       </table>
     </div>
 
-    <!-- Formulario editar -->
     <div class="card mt-4 d-none" id="formEditar">
       <div class="card-header bg-warning">Editar medicamento</div>
       <div class="card-body">
@@ -152,7 +144,6 @@ $categorias = $conn->query("SELECT * FROM categorias")->fetchAll(PDO::FETCH_ASSO
     </div>
   </div>
 
-  <!-- JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>

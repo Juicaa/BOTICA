@@ -1,4 +1,3 @@
-// Obtener los datos del controlador PHP con ruta relativa
 fetch('../backend/controllers/adminController.php')
   .then(response => response.json())
   .then(data => {
@@ -10,5 +9,4 @@ fetch('../backend/controllers/adminController.php')
   })
   .catch(error => console.error('Error:', error));
 
-  // dashboard_administrador.js
 

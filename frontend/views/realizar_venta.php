@@ -65,7 +65,6 @@ $id_usuario = (int)$_SESSION['id_usuario'];
   </form>
 </div>
 
-<!-- MODAL DE ÉXITO -->
 <div class="modal fade" id="exitoModal" tabindex="-1" aria-labelledby="exitoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-success shadow">
@@ -83,7 +82,6 @@ $id_usuario = (int)$_SESSION['id_usuario'];
   </div>
 </div>
 
-<!-- MODALES --> 
 <div class="modal fade" id="stockModal" tabindex="-1" aria-labelledby="stockModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-danger shadow">
@@ -216,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
   asignarEventosEliminar();
 });
 
-// Consultar API DNI Perú
+
 document.getElementById('dni_cliente').addEventListener('keyup', function () {
   const dni = this.value;
   if (dni.length === 8) {

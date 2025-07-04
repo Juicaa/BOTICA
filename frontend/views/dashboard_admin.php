@@ -6,10 +6,9 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
     exit();
 }
 
-// Incluir la conexión a la base de datos
+
 require '../../backend/config/conexion.php';
 
-// Consultas usando PDO para obtener los datos
 $totalmedicamentos = $conn->query("SELECT COUNT(*) FROM medicamentos")->fetchColumn();
 $stockTotal = $conn->query("SELECT COALESCE(SUM(cantidad), 0) FROM lotes")->fetchColumn();
 $hoy = date('Y-m-d');
@@ -37,14 +36,11 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
 </head>
 <body>
   <div class="d-flex" style="min-height: 100vh;">
-    <!-- Incluir el menú lateral -->
     <?php include 'menu_lateral.php'; ?>
 
-    <!-- Contenido principal -->
     <div id="contenidoPrincipal" class="flex-fill p-4 content">
       <h3 class="mb-4">Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></h3>
 
-      <!-- Tarjetas resumen -->
       <div class="row g-3">
         <div class="col-md-3">
           <div class="card shadow-sm text-center p-3">

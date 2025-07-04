@@ -7,7 +7,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 require '../../backend/config/conexion.php';
 
-// Crear lote
 if (isset($_POST['crear'])) {
     $stmt = $conn->prepare("INSERT INTO lotes (id_medicamento, cantidad, fecha_ingreso, fecha_vencimiento, precio_unitario) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([
@@ -17,7 +16,6 @@ if (isset($_POST['crear'])) {
     exit();
 }
 
-// Editar lote
 if (isset($_POST['editar'])) {
     $stmt = $conn->prepare("UPDATE lotes SET cantidad=?, fecha_ingreso=?, fecha_vencimiento=?, precio_unitario=? WHERE id_lote=?");
     $stmt->execute([
@@ -27,7 +25,6 @@ if (isset($_POST['editar'])) {
     exit();
 }
 
-// Eliminar lote
 if (isset($_GET['eliminar'])) {
     $stmt = $conn->prepare("SELECT COUNT(*) FROM salidalotes WHERE id_lote = ?");
     $stmt->execute([$_GET['eliminar']]);

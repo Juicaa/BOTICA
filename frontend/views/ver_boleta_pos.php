@@ -4,7 +4,6 @@ require '../../backend/config/conexion.php';
 $id_venta = $_GET['id_venta'] ?? null;
 if (!$id_venta) die("ID de venta no proporcionado.");
 
-// Obtener venta y cliente
 $stmt = $conn->prepare("
     SELECT v.fecha, v.total, c.nombre_completo, c.dni, u.usuario
     FROM ventas v

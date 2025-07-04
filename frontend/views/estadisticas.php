@@ -55,7 +55,6 @@ $listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol =
   <a href="dashboard_admin.php" class="btn btn-outline-secondary mb-3"><i class="bi bi-arrow-left-circle"></i> Volver al Dashboard</a>
   <div class="row g-4">
 
-    <!-- ventas Semanales -->
     <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
@@ -72,8 +71,7 @@ $listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol =
       </div>
     </div>
 
-    <!-- ventas Mensuales -->
-    <div class="col-md-6">
+      <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
           <div class="d-flex justify-content-between align-items-center mb-2">
@@ -99,8 +97,7 @@ $listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol =
       </div>
     </div>
 
-    <!-- ventas Anuales -->
-    <div class="col-md-6">
+     <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
           <div class="d-flex justify-content-between align-items-center mb-2">
@@ -119,7 +116,7 @@ $listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol =
       </div>
     </div>
 
-    <!-- ventas por Vendedor -->
+    
     <div class="col-md-6">
       <div class="card p-3">
         <form method="get">
@@ -147,7 +144,7 @@ $listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol =
   </div>
 </div>
 
-<!-- Chart.js debe ir antes de tus scripts personalizados -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -157,13 +154,11 @@ const anual = <?= json_encode($ventas_anuales) ?>;
 const vendedores = <?= json_encode($vendedores) ?>;
 const mesFiltrado = <?= json_encode((int)($_GET['mes'] ?? 0)) ?>;
 
-// Etiquetas
 const labelsMensuales = [
   'Enero','Febrero','Marzo','Abril','Mayo','Junio',
   'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'
 ];
 
-// Gráfico semanal
 new Chart(document.getElementById('graficoSemanal'), {
   type: 'bar',
   data: {
@@ -176,7 +171,6 @@ new Chart(document.getElementById('graficoSemanal'), {
   }
 });
 
-// Gráfico mensual
 const dataMensual = Array.from({length: 12}, (_, i) => {
   const m = mensual.find(e => parseInt(e.mes) === i + 1);
   return m ? m.total : 0;
@@ -206,7 +200,6 @@ new Chart(document.getElementById('graficoMensual'), {
   }
 });
 
-// Gráfico anual
 new Chart(document.getElementById('graficoAnual'), {
   type: 'bar',
   data: {
@@ -222,7 +215,6 @@ new Chart(document.getElementById('graficoAnual'), {
   }
 });
 
-// Gráfico por vendedor
 if (vendedores.length > 0) {
   const colores = vendedores.map(() => `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.7)`);
   new Chart(document.getElementById('graficoVendedor'), {
