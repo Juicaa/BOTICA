@@ -1,11 +1,15 @@
-body {
-  position: relative;
-  font-family: 'Mukta', sans-serif;
+/* Resetear márgenes y padding para asegurar que el contenido ocupe toda la pantalla */
+html, body {
   margin: 0;
-  min-height: 100vh;
-  background-color: #f2fdf5;
+  padding: 0;
+  height: 100%;  /* Asegura que el body ocupe toda la altura de la pantalla */
+  display: flex;
+  justify-content: center;  /* Centrar contenido horizontalmente */
+  align-items: center;  /* Centrar contenido verticalmente */
+  background-color: #f2fdf5; /* Fondo suave para la página */
 }
 
+/* Fondo de la página */
 body::before {
   content: "";
   background: url('../img/fondo_login.jpg') no-repeat center center / cover;
@@ -23,8 +27,11 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100vh;  /* Asegura que la altura mínima sea de la pantalla completa */
   padding: 1rem;
+  flex-direction: column;
+  justify-content: center;  /* Centra verticalmente */
+  position: relative;
 }
 
 /* Tarjeta del login */
@@ -34,8 +41,9 @@ body::before {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   padding: 2.5rem 2rem;
   width: 100%;
-  max-width: 420px;
+  max-width: 420px; /* Limitar el ancho máximo */
   text-align: center;
+  margin-bottom: 1rem; /* Ajuste de margen */
 }
 
 /* Logo */
@@ -67,12 +75,6 @@ body::before {
   box-shadow: none;
 }
 
-/* Recordarme */
-.form-check {
-  margin-bottom: 1.5rem;
-  text-align: left;
-}
-
 /* Botón */
 .btn-primary {
   background-color: #54cc96;
@@ -90,15 +92,29 @@ body::before {
 }
 
 /* Footer */
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 1.25rem;
-  font-size: 0.9rem;
-  border-top: 1px solid #e0e0e0;
-  margin-top: 1.5rem;
+footer.footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  color: #666;
+  position: absolute;
+  bottom: 0;  /* Fija el pie de página en la parte inferior */
 }
 
+/* Asegura que el pie de página esté al fondo */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* Asegura que el formulario y el pie de página se distribuyan correctamente */
+  height: 100%;
+}
+
+footer {
+  margin-top: auto;  /* Coloca el pie de página al fondo */
+}
+
+/* Ajustes de estilo para los enlaces en el pie */
 .card-footer a {
   color: #508aeb;
   text-decoration: none;
@@ -109,16 +125,6 @@ body::before {
 
 .card-footer a:hover {
   text-decoration: underline;
-}
-.boton-celeste {
-  background-color: #5bc0de;
-  color: white;
-  padding: 10px 25px;
-  border-radius: 25px;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: bold;
-  margin-top: 1rem;
 }
 
 
