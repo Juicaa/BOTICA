@@ -1,4 +1,16 @@
 /* Establece el fondo completo de la página */
+body {
+    font-family: 'Courier New', monospace; /* Fuente monoespaciada */
+    font-size: 14px;                       /* Tamaño de fuente adecuado para POS */
+    color: #000;                           /* Color negro para el texto */
+    margin: 0;
+    padding: 0;
+    height: 100vh;                         /* La altura completa del viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 body::before {
   content: "";
   background: url('../img/fondo_login.jpg') no-repeat center center / cover;
