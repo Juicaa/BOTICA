@@ -58,7 +58,7 @@ $listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol =
             <h5>ventas Semanales</h5>
             <div class="d-flex gap-2">
               <input type="date" name="inicio_semana" id="fechaInicio" value="<?= htmlspecialchars($inicioSemana) ?>" class="form-control form-control-sm" required>
-              <input type="date" name="fin_semana" id="fechaFin" value="<?= htmlspecialchars($finSemana) ?>" class="form-control form-control-sm" readonly>
+              <input type="date" name="fin_semana" id="fechaFin" value="<?= htmlspecialchars($finSemana) ?>" class="form-control form-control-sm" required>
               <button type="submit" class="btn btn-sm btn-primary">Ver</button>
             </div>
           </div>
