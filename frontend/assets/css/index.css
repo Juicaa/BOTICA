@@ -89,22 +89,3 @@ body::before {
   background-color: #40b97e;
   border-color: #40b97e;
 }
-
-/* Footer */
-footer.footer {
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-  font-size: 12px;
-  color: #666;
-  position: fixed;
-  bottom: 0;  /* Coloca el pie de página en la parte inferior */
-  left: 0;
-  background-color: #f2fdf5; /* Fondo que coincide con el color de la página */
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
-}
-
-/* Asegura que el pie de página siempre esté al fondo */
-footer {
-  margin-top: auto;  /* Hace que el pie se quede al fondo */
-}
