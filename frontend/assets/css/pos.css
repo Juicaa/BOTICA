@@ -4,6 +4,9 @@ body {
   width: 230px;
   margin: 0 auto;
   color: #000;
+  background-image: url('../assets/img/fondo_login.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .center {
