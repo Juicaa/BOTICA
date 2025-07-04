@@ -83,4 +83,3 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <button onclick="window.print()" style="margin-top:10px; width:100%;">🖨️ Imprimir</button>
 </body>
 </html> 
-entiende este codigo 
