@@ -91,22 +91,24 @@ body::before {
   border-color: #40b97e;
 }
 
-/* Footer */
+/* Asegurarse de que el pie de página se mantenga al fondo de la página y centrado */
 footer.footer {
-  width: 100%;
-  text-align: center;
+  width: 100%; /* Asegura que el pie de página ocupe todo el ancho */
+  text-align: center; /* Centra el contenido del pie */
   padding: 10px;
   font-size: 12px;
   color: #666;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-top: auto; /* Coloca el pie de página al final */
+  position: fixed;  /* Asegura que se mantenga fijo */
+  bottom: 0;  /* Coloca el pie de página en la parte inferior */
+  left: 0;  /* Asegura que el pie esté alineado a la izquierda */
+  background-color: #f2fdf5; /* Fondo que coincide con el color de la página */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
-footer {
-  margin-top: auto;  /* Hace que el pie se quede al fondo */
+footer.footer p {
+  margin: 0;  /* Elimina el margen para evitar desplazamientos */
 }
+
 
 /* Ajustes de estilo para los enlaces en el pie */
 .card-footer a {
