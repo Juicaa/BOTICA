@@ -1,8 +1,16 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "indentation": 2,
-    "number-leading-zero": "always",
-    "string-quotes": "double"
+    "indentation": null,
+    "number-leading-zero": null,
+    "string-quotes": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "color-hex-length": null,
+    "font-family-name-quotes": null,
+    "media-feature-range-notation": null,
+    "rule-empty-line-before": null,
+    "declaration-block-single-line-max-declarations": null,
+    "at-rule-empty-line-before": null
   }
 }

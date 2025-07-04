@@ -7,6 +7,6 @@ fetch('../backend/controllers/adminController.php')
     document.getElementById('ventasHoy').textContent = 'S/ ' + data.ventasHoy.toFixed(2);
     document.getElementById('username').textContent = data.username || 'Administrador';
   })
-  .catch(error => console.error('Error:', error));
+  .catch((error) => console.error("Error:", error));
 
 

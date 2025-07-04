@@ -1,11 +1,22 @@
-// Obtener los datos del controlador PHP con ruta relativa
-fetch("../backend/controllers/adminController.php")
-  .then((response) => response.json())
-  .then((data) => {
-    document.getElementById("totalMedicamentos").textContent = data.totalMedicamentos;
-    document.getElementById("stockTotal").textContent = data.stockTotal;
-    document.getElementById("lotesPorVencer").textContent = data.lotesPorVencer;
-    document.getElementById("ventasHoy").textContent = "S/ " + data.ventasHoy.toFixed(2);
-    document.getElementById("username").textContent = data.username || "Administrador";
-  })
-  .catch((error) => console.error("Error:", error));
+// eslint.config.js
+export default [
+  {
+    files: ["**/*.js"],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: "module",
+      globals: {
+        window: "readonly",
+        document: "readonly",
+        fetch: "readonly",
+        console: "readonly"
+      }
+    },
+    rules: {
+      semi: ["error", "always"],
+      quotes: ["error", "double"],
+      "no-unused-vars": "warn",
+      "no-undef": "error"
+    }
+  }
+];
