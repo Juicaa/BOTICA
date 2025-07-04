@@ -50,7 +50,7 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     .center { text-align: center; }
     .line { border-top: 1px dashed #000; margin: 5px 0; }
     .bold { font-weight: bold; }
-    .total { font-size: 30px; font-weight: bold; }
+    .total { font-size: 14px; font-weight: bold; }
     .item { display: flex; justify-content: space-between; }
     @media print {
       button { display: none; }
