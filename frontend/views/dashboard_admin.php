@@ -38,6 +38,9 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
 </head>
 <body>
   <div class="d-flex" style="min-height: 100vh;">
+    <!-- Icono de las tres rayas (hamburguesa) -->
+    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+
     <!-- Incluir el menú lateral -->
     <?php include 'menu_lateral.php'; ?>
 
