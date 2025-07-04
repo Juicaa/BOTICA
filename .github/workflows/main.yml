@@ -71,7 +71,7 @@ jobs:
 
       - name: ESLint - Análisis JS
         run: |
-          npx eslint . --ext .js || exit 1
+          npx eslint . || exit 1
 
       - name: Stylelint - Análisis CSS
         run: |
