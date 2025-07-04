@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Asegúrate de que el usuario esté autenticado
 if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
     header("Location: ../frontend/views/index.html");
     exit();
@@ -76,7 +75,7 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
     </div>
   </div>
 
-  <!-- Asegúrate de colocar estos enlaces justo antes del cierre de la etiqueta </body> -->
+
   <script src="../js/dashboard_administrador.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
