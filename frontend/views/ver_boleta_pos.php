@@ -15,7 +15,6 @@ $stmt->execute([$id_venta]);
 $venta = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$venta) die("Venta no encontrada.");
 
-// Detalle
 $stmt = $conn->prepare("
     SELECT m.nombre AS medicamento, s.cantidad, l.precio_unitario
     FROM salidalotes s

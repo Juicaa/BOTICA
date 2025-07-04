@@ -6,27 +6,23 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol'] !== 'administrador') {
 }
 require '../../backend/config/conexion.php';
 
-// --- VENTAS SEMANALES ---
 $inicioSemana = $_GET['inicio_semana'] ?? date('Y-m-d');
 $finSemana = $_GET['fin_semana'] ?? date('Y-m-d', strtotime($inicioSemana . ' +7 days'));
 $stmtSemana = $conn->prepare("SELECT DATE(fecha) as dia, SUM(total) as total FROM ventas WHERE fecha BETWEEN ? AND ? GROUP BY dia");
 $stmtSemana->execute([$inicioSemana, $finSemana]);
 $ventas_semanales = $stmtSemana->fetchAll(PDO::FETCH_ASSOC);
 
-// --- VENTAS MENSUALES ---
 $mesSeleccionado = $_GET['mes'] ?? date('n');
 $anioMesSeleccionado = $_GET['anio_mes'] ?? date('Y');
 $stmtMensual = $conn->prepare("SELECT MONTH(fecha) as mes, SUM(total) as total FROM ventas WHERE YEAR(fecha) = ? GROUP BY mes");
 $stmtMensual->execute([$anioMesSeleccionado]);
 $ventas_mensuales = $stmtMensual->fetchAll(PDO::FETCH_ASSOC);
 
-// --- VENTAS ANUALES ---
 $anualYear = $_GET['anio_anual'] ?? date('Y');
 $stmtAnual = $conn->prepare("SELECT MONTH(fecha) as mes, SUM(total) as total FROM ventas WHERE YEAR(fecha) = ? GROUP BY mes");
 $stmtAnual->execute([$anualYear]);
 $ventas_anuales = $stmtAnual->fetchAll(PDO::FETCH_ASSOC);
 
-// --- VENTAS POR VENDEDOR ---
 $vendedorSeleccionado = $_GET['vendedor'] ?? '';
 if ($vendedorSeleccionado) {
     $stmtVendedor = $conn->prepare("SELECT u.usuario, SUM(v.total) as total FROM ventas v JOIN usuarios u ON v.id_usuario = u.id_usuario WHERE u.usuario = ? GROUP BY u.usuario");
@@ -62,7 +58,7 @@ $listausuarios = $conn->query("SELECT DISTINCT usuario FROM usuarios WHERE rol =
             <h5>ventas Semanales</h5>
             <div class="d-flex gap-2">
               <input type="date" name="inicio_semana" id="fechaInicio" value="<?= htmlspecialchars($inicioSemana) ?>" class="form-control form-control-sm" required>
-              <input type="date" name="fin_semana" id="fechaFin" value="<?= htmlspecialchars($finSemana) ?>" class="form-control form-control-sm" required>
+              <input type="date" name="fin_semana" id="fechaFin" value="<?= htmlspecialchars($finSemana) ?>" class="form-control form-control-sm" readonly>
               <button type="submit" class="btn btn-sm btn-primary">Ver</button>
             </div>
           </div>
