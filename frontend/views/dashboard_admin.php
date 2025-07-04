@@ -33,14 +33,11 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/menu_lateral.css">
+  
 
 </head>
 <body>
   <div class="d-flex" style="min-height: 100vh;">
-    <!-- Icono de las tres rayas (hamburguesa) -->
-    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-
     <!-- Incluir el menú lateral -->
     <?php include 'menu_lateral.php'; ?>
 
@@ -80,7 +77,6 @@ $ventasHoy = $conn->query("SELECT COALESCE(SUM(total), 0) FROM ventas WHERE DATE
   </div>
 
   <!-- Asegúrate de colocar estos enlaces justo antes del cierre de la etiqueta </body> -->
-  <script src="../js/menu_lateral.js"></script>
   <script src="../js/dashboard_administrador.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
