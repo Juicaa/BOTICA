@@ -33,32 +33,16 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <title>Boleta</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/dashboard.css">   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: monospace;
-      font-size: 12px;
-      width: 230px;
-      margin: 0 auto;
-      color: #000;
-    }
-    .center { text-align: center; }
-    .line { border-top: 1px dashed #000; margin: 5px 0; }
-    .bold { font-weight: bold; }
-    .total { font-size: 14px; font-weight: bold; }
-    .item { display: flex; justify-content: space-between; }
-    @media print {
-      button { display: none; }
-    }
-  </style>
+    <link rel="stylesheet" href="../assets/css/pos.css">   
+    
 </head>
 <body>
   <div class="center bold">Botica Bienestar y Salud</div>
   <center><div class="text-center mb-3"><img width="100px" height="100px" src="../assets/img/logo_botica.png" alt="Botica Bienestar y Salud" class="login-logo" /></div></center>
-    <div class="center">Fecha: <?= $venta['fecha'] ?></div>
+  <div class="center">Fecha: <?= $venta['fecha'] ?></div>
   <div class="line"></div>
   <div><span class="bold">Cliente:</span> <?= $venta['nombre_completo'] ?></div>
   <div><span class="bold">DNI:</span> <?= $venta['dni'] ?></div>
@@ -82,4 +66,4 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <button onclick="window.print()" style="margin-top:10px; width:100%;">🖨️ Imprimir</button>
 </body>
-</html> 
+</html>
