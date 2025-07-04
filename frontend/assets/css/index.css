@@ -4,8 +4,8 @@ html, body {
   padding: 0;
   height: 100%;  /* Asegura que el body ocupe toda la altura de la pantalla */
   display: flex;
-  justify-content: center;  /* Centrar contenido horizontalmente */
-  align-items: center;  /* Centrar contenido verticalmente */
+  flex-direction: column; /* Organiza el contenido en columnas */
+  justify-content: space-between;  /* Hace que el contenido principal y el pie se distribuyan correctamente */
   background-color: #f2fdf5; /* Fondo suave para la página */
 }
 
@@ -25,12 +25,11 @@ body::before {
 /* Centrado del contenido */
 .container {
   display: flex;
+  flex-direction: column;  /* Asegura que el contenido se organice en columna */
   align-items: center;
   justify-content: center;
   min-height: 100vh;  /* Asegura que la altura mínima sea de la pantalla completa */
   padding: 1rem;
-  flex-direction: column;
-  justify-content: center;  /* Centra verticalmente */
   position: relative;
 }
 
@@ -98,18 +97,12 @@ footer.footer {
   padding: 10px;
   font-size: 12px;
   color: #666;
-  position: absolute;
-  bottom: 0;  /* Fija el pie de página en la parte inferior */
+  position: absolute;  /* Fija el pie al fondo de la página */
+  bottom: 0;
+  left: 0;
 }
 
-/* Asegura que el pie de página esté al fondo */
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;  /* Asegura que el formulario y el pie de página se distribuyan correctamente */
-  height: 100%;
-}
-
+/* Asegura que el pie de página siempre esté al fondo */
 footer {
   margin-top: auto;  /* Coloca el pie de página al fondo */
 }
@@ -126,5 +119,3 @@ footer {
 .card-footer a:hover {
   text-decoration: underline;
 }
-
-
