@@ -62,11 +62,11 @@ jobs:
 
       - name: Instalar dependencias de Node
         run: |
-          if [ -f package.json ]; then
-            npm ci
+          if [ -f package.json ] && [ -f package-lock.json ]; then
+          npm ci
           else
-            npm init -y
-            npm install --save-dev eslint stylelint htmlhint prettier jest
+          echo "package-lock.json no encontrado. Usando npm install..."
+          npm install
           fi
 
       - name: ESLint - Análisis JS
