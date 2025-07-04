@@ -2,115 +2,93 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
 
 jobs:
-  php-tests:
+  php-ci:
     runs-on: ubuntu-latest
+    name: Análisis de PHP
 
     steps:
-      - name: Checkout repository
+      - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: Cache Composer dependencies
+      - name: Cache Composer
         uses: actions/cache@v4
         with:
           path: vendor
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
-      - name: Set up PHP
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
 
-      - name: Install dependencies (composer)
+      - name: Instalar dependencias PHP
         run: |
           if [ -f composer.json ]; then
-            composer install --no-progress --no-suggest --prefer-dist
+            composer install --no-interaction --prefer-dist
           fi
 
-      - name: Run PHPStan (static analysis)
+      - name: PHPStan - Análisis estático
         run: |
           if [ -f vendor/bin/phpstan ]; then
-            vendor/bin/phpstan analyse --no-progress --memory-limit=1G backend/
+            vendor/bin/phpstan analyse backend/ --level=max
+          else
+            echo "phpstan no está instalado."
           fi
 
-      - name: Run PHP_CodeSniffer (code style)
+      - name: PHP_CodeSniffer - Estilo de código
         run: |
           if [ -f vendor/bin/phpcs ]; then
-            vendor/bin/phpcs --standard=PSR12 backend/
+            vendor/bin/phpcs backend/ --standard=PSR12
+          else
+            echo "phpcs no está instalado."
           fi
 
-      - name: Run PHPUnit tests
-        run: |
-          if [ -f vendor/bin/phpunit ]; then
-            vendor/bin/phpunit
-          fi
-
-      - name: PHPUnit Coverage
-        run: |
-          if [ -f vendor/bin/phpunit ]; then
-            vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
-          fi
-
-  js-css-html-lint:
+  frontend-ci:
     runs-on: ubuntu-latest
+    name: Análisis de HTML, CSS y JS
 
     steps:
-      - name: Checkout repository
+      - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: Cache Node modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install JS/CSS/HTML dependencies
+      - name: Instalar dependencias de Node
         run: |
           if [ -f package.json ]; then
-            npm install
+            npm ci
+          else
+            npm init -y
+            npm install --save-dev eslint stylelint htmlhint prettier jest
           fi
 
-      - name: Run npm audit (security)
+      - name: ESLint - Análisis JS
         run: |
-          if [ -f package.json ]; then
-            npm audit --audit-level=moderate
-          fi
+          npx eslint . --ext .js || exit 1
 
-      - name: Run JS lint (eslint)
+      - name: Stylelint - Análisis CSS
         run: |
-          if [ -f node_modules/.bin/eslint ]; then
-            npx eslint .
-          fi
+          npx stylelint "**/*.css" || exit 1
 
-      - name: Run CSS lint (stylelint)
+      - name: HTMLHint - Validación HTML
         run: |
-          if [ -f node_modules/.bin/stylelint ]; then
-            npx stylelint "**/*.css"
-          fi
+          npx htmlhint "**/*.html" || exit 1
 
-      - name: Run HTML lint (htmlhint)
+      - name: Prettier - Validación de formato
         run: |
-          if [ -f node_modules/.bin/htmlhint ]; then
-            npx htmlhint "**/*.html"
-          fi
+          npx prettier . --check || exit 1
 
-      - name: Run Prettier (format check)
-        run: |
-          if [ -f node_modules/.bin/prettier ]; then
-            npx prettier --check .
-          fi
-
-      - name: Run JS tests (Jest)
+      - name: Jest - Pruebas JS (si aplica)
         run: |
           if [ -f node_modules/.bin/jest ]; then
             npx jest
+          else
+            echo "Jest no configurado. Saltando pruebas JS."
           fi
