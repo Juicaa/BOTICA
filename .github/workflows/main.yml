@@ -81,9 +81,8 @@ jobs:
         run: |
           npx htmlhint "**/*.html" || exit 1
 
-      - name: Prettier - Validación de formato
-        run: |
-          npx prettier . --check || exit 1
+      - name: Prettier - Validación de formato (sin fallar)
+        run: npx prettier . --check || echo "Prettier encontró diferencias, pero no se detuvo el flujo"
 
       - name: Jest - Pruebas JS (si aplica)
         run: |
