@@ -1,4 +1,4 @@
-/* Establece la fuente y el tamaño de texto */
+/* Establece el fondo completo de la página */
 body {
     font-family: 'Courier New', monospace; /* Fuente monoespaciada */
     font-size: 12px;                       /* Tamaño de fuente adecuado para POS */
@@ -9,6 +9,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url('../img/fondo_login.jpg') no-repeat center center fixed; /* Fondo de la imagen */
+    background-size: cover; /* Hace que la imagen de fondo cubra toda la pantalla */
 }
 
 /* Contenedor de la boleta */
