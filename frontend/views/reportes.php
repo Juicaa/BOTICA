@@ -87,19 +87,23 @@ $exportParams = http_build_query([
     <div class="col-md-3">
       <label>Usuario</label>
       <select class="form-select" name="usuario">
-        <option value="" disabled selected>Seleccione usuario</option>
-              <?php foreach ($usuarios as $u): ?>
-                <option value="<?= $u['id_usuario'] ?>"><?= htmlspecialchars($u['usuario']) ?></option>
-              <?php endforeach; ?>
+        <option value="">Todos</option>
+        <?php foreach ($usuarios as $u): ?>
+          <option value="<?= htmlspecialchars($u['usuario']) ?>" <?= $usuario === $u['usuario'] ? 'selected' : '' ?>>
+            <?= htmlspecialchars($u['usuario']) ?>
+          </option>
+        <?php endforeach; ?>
       </select>
     </div>
     <div class="col-md-3">
       <label>Medicamento</label>
       <select class="form-select" name="medicamento">
-        <option value="" disabled selected>Seleccione medicamento</option>
-                <?php foreach ($medicamentos as $m): ?>
-                  <option value="<?= $m['id_medicamento'] ?>"><?= htmlspecialchars($m['nombre']) ?></option>
-                <?php endforeach; ?>
+        <option value="">Todos</option>
+        <?php foreach ($medicamentos as $m): ?>
+          <option value="<?= htmlspecialchars($m['nombre']) ?>" <?= $medicamento === $m['nombre'] ? 'selected' : '' ?>>
+            <?= htmlspecialchars($m['nombre']) ?>
+          </option>
+        <?php endforeach; ?>
       </select>
     </div>
     <div class="col-12 d-flex gap-3">
