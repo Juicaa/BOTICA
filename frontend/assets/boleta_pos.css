@@ -1,7 +1,7 @@
-/* Establece el fondo completo de la página */
+/* Establece la fuente y el tamaño de texto */
 body {
     font-family: 'Courier New', monospace; /* Fuente monoespaciada */
-    font-size: 14px;                       /* Tamaño de fuente adecuado para POS */
+    font-size: 12px;                       /* Tamaño de fuente adecuado para POS */
     color: #000;                           /* Color negro para el texto */
     margin: 0;
     padding: 0;
@@ -9,11 +9,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../img/fondo_login.jpg') no-repeat center center fixed; /* Fondo de la imagen */
-    background-size: cover; /* Hace que la imagen de fondo cubra toda la pantalla */
 }
 
-/* Contenedor de la tarjeta de boleta */
+/* Contenedor de la boleta */
 .ticket {
     width: 320px;                         /* Ancho adecuado para la boleta */
     padding: 20px;
@@ -23,6 +21,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera para resaltar la boleta */
     position: relative;
     z-index: 1;                           /* Asegura que la tarjeta esté por encima del fondo */
+    max-height: 100%;                      /* Para evitar que se desborde la tarjeta */
+    overflow: hidden;                     /* Asegura que el contenido no se desborde */
+    border-radius: 10px;                  /* Bordes redondeados */
 }
 
 /* Estilo para el logo de la empresa */
