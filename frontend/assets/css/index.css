@@ -4,9 +4,9 @@ html, body {
   padding: 0;
   height: 100%; /* Asegura que el body ocupe toda la altura de la pantalla */
   display: flex;
-  flex-direction: column;  /* Organizar el contenido en columnas */
-  justify-content: center; /* Centrar el contenido verticalmente */
-  align-items: center; /* Centrar el contenido horizontalmente */
+  flex-direction: column;  /* Organiza el contenido en columnas */
+  justify-content: space-between; /* Distribuye el contenido y el footer */
+  align-items: center; /* Centra el contenido horizontalmente */
   background-color: #f2fdf5; /* Fondo suave para la página */
 }
 
@@ -19,17 +19,17 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.4;  /* Efecto de opacidad del fondo */
+  opacity: 0.4;
   z-index: -1; /* Asegura que el fondo esté detrás del contenido */
 }
 
 /* Centrado del contenido */
 .container {
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centrado vertical del contenido */
-  align-items: center; /* Centrado horizontal del contenido */
-  min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  flex-direction: column;  /* Organiza el contenido en columna */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  min-height: 100vh; /* Asegura que la altura mínima sea de la pantalla completa */
   padding: 1rem;
   position: relative;
 }
@@ -43,7 +43,7 @@ body::before {
   width: 100%;
   max-width: 420px; /* Limitar el ancho máximo */
   text-align: center;
-  margin-bottom: 1rem; /* Asegura un pequeño margen debajo del formulario */
+  margin-bottom: 1rem; /* Ajuste de margen */
 }
 
 /* Logo */
@@ -91,24 +91,24 @@ body::before {
   border-color: #40b97e;
 }
 
-/* Asegurarse de que el pie de página se mantenga al fondo de la página y centrado */
+/* Footer */
 footer.footer {
-  width: 100%; /* Asegura que el pie de página ocupe todo el ancho */
-  text-align: center; /* Centra el contenido del pie */
+  width: 100%;
+  text-align: center;
   padding: 10px;
   font-size: 12px;
   color: #666;
-  position: fixed;  /* Asegura que se mantenga fijo */
+  position: fixed;
   bottom: 0;  /* Coloca el pie de página en la parte inferior */
-  left: 0;  /* Asegura que el pie esté alineado a la izquierda */
+  left: 0;
   background-color: #f2fdf5; /* Fondo que coincide con el color de la página */
   z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
-footer.footer p {
-  margin: 0;  /* Elimina el margen para evitar desplazamientos */
+/* Asegura que el pie de página siempre esté al fondo */
+footer {
+  margin-top: auto;  /* Hace que el pie se quede al fondo */
 }
-
 
 /* Ajustes de estilo para los enlaces en el pie */
 .card-footer a {
