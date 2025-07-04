@@ -14,7 +14,7 @@ export default [
     },
     rules: {
       semi: ["error", "always"],
-      quotes: ["error", "double"],
+      quotes: ["off"],
       "no-unused-vars": "warn",
       "no-undef": "error"
     }
