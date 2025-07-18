@@ -91,3 +91,27 @@ jobs:
           else
             echo "Jest no configurado. Saltando pruebas JS."
           fi
+          
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Escaneo de seguridad con Trivy
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Instalar Trivy
+        run: |
+          sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+          echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+          sudo apt-get update
+          sudo apt-get install trivy -y
+
+      - name: Escanear dependencias del proyecto PHP
+        run: |
+          trivy fs backend/ --exit-code 1 --severity HIGH,CRITICAL || echo "⚠️ Vulnerabilidades detectadas."
+
+      - name: Escanear dependencias del frontend (Node.js)
+        run: |
+          trivy fs frontend/ --exit-code 1 --severity HIGH,CRITICAL || echo "⚠️ Vulnerabilidades detectadas."
+
