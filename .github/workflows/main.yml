@@ -34,7 +34,8 @@ jobs:
       - name: PHPStan - Análisis estático
         run: |
           if [ -f vendor/bin/phpstan ]; then
-            vendor/bin/phpstan analyse backend/ --level=max
+            # Se agregó frontend/views/ al análisis
+            vendor/bin/phpstan analyse backend/ frontend/views/ --level=max
           else
             echo "phpstan no está instalado."
           fi
@@ -42,7 +43,8 @@ jobs:
       - name: PHP_CodeSniffer - Estilo de código
         run: |
           if [ -f vendor/bin/phpcs ]; then
-            vendor/bin/phpcs backend/ --standard=PSR12
+            # Se agregó frontend/views/ al análisis
+            vendor/bin/phpcs backend/ frontend/views/ --standard=PSR12
           else
             echo "phpcs no está instalado."
           fi
@@ -91,7 +93,7 @@ jobs:
           else
             echo "Jest no configurado. Saltando pruebas JS."
           fi
-          
+
   security-scan:
     runs-on: ubuntu-latest
     name: Escaneo de seguridad con Trivy
@@ -114,4 +116,3 @@ jobs:
       - name: Escanear dependencias del frontend (Node.js)
         run: |
           trivy fs frontend/ --exit-code 1 --severity HIGH,CRITICAL || echo "⚠️ Vulnerabilidades detectadas."
-
